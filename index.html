@@ -89,45 +89,162 @@
     .doc-type-selector input{width:18px;height:18px;cursor:pointer}
     .aviso-lamina{background:#fffbeb;border:1px solid #fcd34d;border-radius:8px;padding:6px 10px;font-size:12px;color:#92400e;margin-top:4px;display:none}
     .desconto-pct-badge{background:#fef3c7;border:1px solid #fcd34d;border-radius:8px;padding:6px 10px;font-size:12px;color:#92400e;margin-top:4px}
-    @media (max-width:980px){
-      .grid,.grid-2,.total-box{grid-template-columns:1fr}
-      .span-8,.span-6,.span-5,.span-4,.span-3,.span-2,.span-1{grid-column:span 12}
-    }
+    .resumo-forma{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-radius:14px;border:1.5px solid var(--line);background:#fafcff;margin-bottom:10px;gap:12px}
+    .resumo-forma .rf-icon{font-size:26px;min-width:36px;text-align:center}
+    .resumo-forma .rf-info{flex:1}
+    .resumo-forma .rf-label{font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+    .resumo-forma .rf-quant{font-size:12px;color:var(--muted);margin-top:2px}
+    .resumo-forma .rf-valor{font-size:22px;font-weight:700;text-align:right;min-width:130px}
+    .resumo-forma.pix{border-color:#c4b5fd;background:#f5f3ff}
+    .resumo-forma.pix .rf-valor{color:var(--purple)}
+    .resumo-forma.fiado{border-color:#fcd34d;background:#fffbeb}
+    .resumo-forma.fiado .rf-valor{color:var(--warn)}
+    .resumo-forma.cheque{border-color:#93c5fd;background:#eff6ff}
+    .resumo-forma.cheque .rf-valor{color:var(--accent)}
+    .resumo-forma.dinheiro{border-color:#6ee7b7;background:#f0fdf4}
+    .resumo-forma.dinheiro .rf-valor{color:var(--ok)}
+    .resumo-forma.boleto{border-color:#fca5a5;background:#fff1f2}
+    .resumo-forma.boleto .rf-valor{color:var(--danger)}
+    .resumo-total-dia{border-radius:16px;padding:20px 24px;background:var(--accent);color:white;display:flex;align-items:center;justify-content:space-between;margin-top:16px;margin-bottom:8px}
+    .resumo-total-dia .rt-label{font-size:15px;font-weight:700;opacity:.85}
+    .resumo-total-dia .rt-valor{font-size:34px;font-weight:700}
+    .resumo-total-dia .rt-quant{font-size:13px;opacity:.75;margin-top:2px}
+    .resumo-notas-lista{max-height:420px;overflow:auto;border:1px solid var(--line);border-radius:12px}
+    .resumo-nota-item{padding:10px 14px;border-bottom:1px solid var(--line);font-size:13px;display:flex;justify-content:space-between;align-items:center}
+    .resumo-nota-item:last-child{border-bottom:none}
+    .resumo-nota-item .rni-left strong{font-size:14px}
+    .resumo-nota-item .rni-left span{font-size:12px;color:var(--muted);display:block;margin-top:2px}
+    .resumo-nota-item .rni-valor{font-weight:700;font-size:15px;text-align:right}
+    .badge-forma{display:inline-block;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:700;margin-right:4px}
+    .bf-pix{background:#ede9fe;color:#6d28d9}
+    .bf-dinheiro{background:#dcfce7;color:#166534}
+    .bf-cheque{background:#dbeafe;color:#1e40af}
+    .bf-fiado{background:#fef3c7;color:#92400e}
+    .bf-boleto{background:#fee2e2;color:#991b1b}
+    .bf-outro{background:#f1f5f9;color:#475569}
+    /* bloco parcelamento */
+    .bloco-parcelamento{border:2px dashed #f59e0b;border-radius:14px;padding:16px;background:#fffbeb;margin-top:12px}
+    .bloco-parcelamento .bp-title{font-weight:700;color:#b45309;font-size:15px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+    .parcela-linha{display:grid;grid-template-columns:36px 130px 130px 1fr 36px;gap:8px;margin-bottom:8px;align-items:end}
+    .parcela-linha .field label{color:#b45309}
+    .parcela-resumo{background:#fff8e1;border:1px solid #fcd34d;border-radius:10px;padding:10px 14px;font-size:13px;margin-top:8px;display:flex;flex-wrap:wrap;gap:14px}
+    .parcela-resumo span{font-weight:700}
+    .parcela-resumo .pr-ok{color:var(--ok)}
+    .parcela-resumo .pr-warn{color:var(--warn)}
+    .parcela-resumo .pr-err{color:var(--danger)}
+    /* Contas a Receber */
+    .cr-card-lista{max-height:500px;overflow:auto;border:1px solid var(--line);border-radius:12px}
+    .cr-item{padding:12px 16px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .15s}
+    .cr-item:hover{background:#f0f5ff}
+    .cr-item.selecionado{background:#eff6ff;border-left:4px solid var(--accent)}
+    .cr-item:last-child{border-bottom:none}
+    .cr-item-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+    .cr-item-nome{font-size:14px;font-weight:700}
+    .cr-item-valor{font-size:15px;font-weight:700;text-align:right;white-space:nowrap}
+    .cr-item-info{font-size:12px;color:var(--muted);margin-top:3px}
+    .cr-progress-wrap{margin-top:7px;background:#e5e7eb;border-radius:999px;height:8px;overflow:hidden}
+    .cr-progress-bar{height:100%;border-radius:999px;background:var(--ok);transition:width .4s}
+    .cr-progress-bar.amarelo{background:var(--warn)}
+    .cr-progress-bar.vermelho{background:var(--danger)}
+    .cr-progress-label{font-size:11px;color:var(--muted);margin-top:3px;display:flex;justify-content:space-between}
+    .badge-cr{display:inline-block;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:700}
+    .badge-cr.quitado{background:#dcfce7;color:#166534}
+    .badge-cr.parcial{background:#fef3c7;color:#92400e}
+    .badge-cr.aberto{background:#fee2e2;color:#991b1b}
+    .badge-cr.vencido{background:#fce7f3;color:#9d174d;animation:piscaBadge 1.2s infinite}
+    @keyframes piscaBadge{0%,100%{opacity:1}50%{opacity:.4}}
+    .parcela-row{display:flex;align-items:center;gap:8px;padding:9px 12px;border-bottom:1px solid var(--line);font-size:13px}
+    .parcela-row:last-child{border-bottom:none}
+    .parcela-row .pr-num{min-width:26px;font-weight:700;color:var(--muted);font-size:12px;text-align:center}
+    .parcela-row .pr-data{min-width:85px;font-size:12px}
+    .parcela-row .pr-desc{flex:1;font-size:12px;color:var(--muted)}
+    .parcela-row .pr-valor{font-weight:700;min-width:95px;text-align:right}
+    .parcela-row .pr-acao{min-width:80px;text-align:right}
+    .parcela-row.pago{background:#f0fdf4}
+    .parcela-row.vencido{background:#fff1f2}
+    .cr-detalhe-header{background:#f8faff;border-radius:12px;padding:14px;margin-bottom:12px;border:1px solid var(--line)}
+    .cr-totais-bar{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px}
+    .cr-alerta-venc{background:#fff1f2;border:1px solid #fca5a5;border-radius:10px;padding:10px 14px;font-size:13px;color:#991b1b;margin-bottom:10px}
+    .cr-resumo-top{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+
+    /* ── RESUMO DO DIA — estilos novos ── */
+    .rd-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .rd-secao-titulo{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:16px 0 8px;display:flex;align-items:center;gap:8px}
+    .rd-secao-titulo::after{content:'';flex:1;height:1px;background:var(--line)}
+    .rd-totais-top{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+    .rd-mini{border:1px solid var(--line);border-radius:12px;padding:14px;background:#fafcff;text-align:center}
+    .rd-mini .rd-label{font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;margin-bottom:6px}
+    .rd-mini .rd-val{font-size:22px;font-weight:700}
+    .rd-mini .rd-sub{font-size:11px;color:var(--muted);margin-top:3px}
+    .rd-mini.destaque{background:var(--accent);border-color:var(--accent)}
+    .rd-mini.destaque .rd-label{color:rgba(255,255,255,.8)}
+    .rd-mini.destaque .rd-val{color:#fff}
+    .rd-mini.destaque .rd-sub{color:rgba(255,255,255,.7)}
+    .rd-mini.verde{background:#f0fdf4;border-color:#6ee7b7}
+    .rd-mini.verde .rd-val{color:var(--ok)}
+    .rd-mini.roxo{background:#f5f3ff;border-color:#c4b5fd}
+    .rd-mini.roxo .rd-val{color:var(--purple)}
+    .rd-mini.amarelo{background:#fffbeb;border-color:#fcd34d}
+    .rd-mini.amarelo .rd-val{color:var(--warn)}
+    .rd-mini.vermelho{background:#fff1f2;border-color:#fca5a5}
+    .rd-mini.vermelho .rd-val{color:var(--danger)}
+    .rd-mov-lista{border:1px solid var(--line);border-radius:12px;overflow:hidden;max-height:460px;overflow-y:auto}
+    .rd-mov-item{display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13px}
+    .rd-mov-item:last-child{border-bottom:none}
+    .rd-mov-item:hover{background:#f8faff}
+    .rd-mov-icon{font-size:18px;min-width:28px;text-align:center}
+    .rd-mov-info{flex:1}
+    .rd-mov-desc{font-weight:600;font-size:13px}
+    .rd-mov-meta{font-size:11px;color:var(--muted);margin-top:2px}
+    .rd-mov-valor{font-weight:700;font-size:14px;text-align:right;white-space:nowrap}
+    .rd-mov-valor.entrada{color:var(--ok)}
+    .rd-mov-valor.saida{color:var(--danger)}
+    .rd-mov-valor.pix{color:var(--purple)}
+    .rd-mov-valor.nota{color:var(--accent)}
+    .rd-tag{display:inline-block;padding:2px 8px;border-radius:999px;font-size:10px;font-weight:700;margin-left:6px}
+    .rd-tag-pix{background:#ede9fe;color:#6d28d9}
+    .rd-tag-din{background:#dcfce7;color:#166534}
+    .rd-tag-che{background:#dbeafe;color:#1e40af}
+    .rd-tag-fia{background:#fef3c7;color:#92400e}
+    .rd-tag-bol{background:#fee2e2;color:#991b1b}
+    .rd-tag-sai{background:#fee2e2;color:#991b1b}
+    .rd-tag-cr{background:#f0fdf4;color:#166534}
+    .rd-tag-nota{background:#e0e7ff;color:#3730a3}
+    .rd-empty{padding:24px;text-align:center;color:var(--muted);font-size:14px}
+    .rd-saldo-box{border-radius:16px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+    .rd-saldo-box.positivo{background:linear-gradient(135deg,#059669,#047857);color:white}
+    .rd-saldo-box.negativo{background:linear-gradient(135deg,#dc2626,#b91c1c);color:white}
+    .rd-saldo-box .sb-label{font-size:13px;font-weight:700;opacity:.85}
+    .rd-saldo-box .sb-valor{font-size:32px;font-weight:700}
+    .rd-saldo-box .sb-sub{font-size:12px;opacity:.7;margin-top:2px}
+    .rd-filtros{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;align-items:center}
+    .rd-filtros select,.rd-filtros input{padding:8px 12px;border:1.5px solid var(--line);border-radius:10px;font-size:13px;background:white}
+    .rd-filtros input{flex:1;min-width:140px}
+
     @media print{
       body *{visibility:hidden}
       .print-area,.print-area *{visibility:visible}
-      .print-area{
-        display:block!important;
-        position:absolute;left:0;top:0;width:100%;
-        background:white;z-index:999999;padding:0;margin:0;
-      }
+      .print-area{display:block!important;position:absolute;left:0;top:0;width:100%;background:white;z-index:999999;padding:0;margin:0;}
       .no-print{display:none !important}
-      .pedido-via{
-        width:100%;
-        height:50vh;
-        page-break-inside:avoid;
-        overflow:hidden;
-        padding:10px 16px;
-        box-sizing:border-box;
-      }
-      .pedido-via:first-child{
-        border-bottom:2px dashed #999;
-      }
+      .pedido-via{width:100%;height:50vh;page-break-inside:avoid;overflow:hidden;padding:10px 16px;box-sizing:border-box;}
+      .pedido-via:first-child{border-bottom:2px dashed #999;}
     }
   </style>
 </head>
 <body>
 <div class="wrap no-print">
-  <h1>&#x1F9FE; Vendas Catarinense</h1>
-  <div class="sub">Pedidos &middot; Orçamentos &middot; Pix &middot; Caixa &mdash; gestão integrada de vendas</div>
+  <h1>🧾 Vendas Catarinense</h1>
+  <div class="sub">Pedidos · Orçamentos · Pix · Caixa — gestão integrada de vendas</div>
 
   <div class="tabs">
-    <button class="tab-btn active" onclick="abrirAba('abaPedidos',this)">&#x1F4CB; Pedidos / Orçamentos</button>
-    <button class="tab-btn" onclick="abrirAba('abaFinanceiro',this)">&#x1F4B0; Financeiro Pix</button>
-    <button class="tab-btn" onclick="abrirAba('abaVendasPix',this)">&#x1F4F2; Vendas Pix</button>
-    <button class="tab-btn" onclick="abrirAba('abaCaixa',this)">&#x1F3E6; Caixa</button>
-    <button class="tab-btn" onclick="abrirAba('abaCaixaPix',this)">&#x1F4F2; Caixa Pix</button>
-    <button class="tab-btn" onclick="abrirAba('abaConfig',this)">&#x2699;&#xFE0F; Configurações</button>
+    <button class="tab-btn active" onclick="abrirAba('abaPedidos',this)">📋 Pedidos / Orçamentos</button>
+    <button class="tab-btn" onclick="abrirAba('abaFinanceiro',this)">💰 Financeiro Pix</button>
+    <button class="tab-btn" onclick="abrirAba('abaVendasPix',this)">📲 Vendas Pix</button>
+    <button class="tab-btn" onclick="abrirAba('abaCaixa',this)">🏦 Caixa</button>
+    <button class="tab-btn" onclick="abrirAba('abaCaixaPix',this)">📲 Caixa Pix</button>
+    <button class="tab-btn" onclick="abrirAba('abaContasReceber',this)">💳 Contas a Receber</button>
+    <button class="tab-btn" onclick="abrirAba('abaResumoDia',this)">📊 Resumo do Dia</button>
+    <button class="tab-btn" onclick="abrirAba('abaConfig',this)">⚙️ Configurações</button>
   </div>
 
   <!-- ABA PEDIDOS -->
@@ -135,73 +252,29 @@
     <div class="grid">
       <div class="card">
         <h2>Novo documento</h2>
-
         <div class="doc-type-selector">
-          <label>
-            <input type="radio" name="tipoDocumento" value="Orçamento" onchange="onTipoDocumentoChange()"> &#x1F4C4; Orçamento
-          </label>
-          <label>
-            <input type="radio" name="tipoDocumento" value="Pedido" onchange="onTipoDocumentoChange()" checked> &#x2705; Pedido (gera movimentação)
-          </label>
+          <label><input type="radio" name="tipoDocumento" value="Orçamento" onchange="onTipoDocumentoChange()"> 📄 Orçamento</label>
+          <label><input type="radio" name="tipoDocumento" value="Pedido" onchange="onTipoDocumentoChange()" checked> ✅ Pedido (gera movimentação)</label>
         </div>
-
         <div class="row">
-          <div class="field span-4">
-            <label>Nº do documento</label>
-            <input id="pedidoNumero" readonly />
-          </div>
-          <div class="field span-4">
-            <label>Data</label>
-            <input id="pedidoData" type="date" />
-          </div>
-          <div class="field span-4">
-            <label>Vendedor</label>
-            <input id="pedidoVendedor" placeholder="Nome do vendedor" />
-          </div>
+          <div class="field span-4"><label>Nº do documento</label><input id="pedidoNumero" readonly /></div>
+          <div class="field span-4"><label>Data</label><input id="pedidoData" type="date" /></div>
+          <div class="field span-4"><label>Vendedor</label><input id="pedidoVendedor" placeholder="Nome do vendedor" /></div>
         </div>
-
-        <h3>&#x1F464; Dados do Cliente</h3>
+        <h3>👤 Dados do Cliente</h3>
         <div class="row">
-          <div class="field span-6">
-            <label>Nome do cliente</label>
-            <input id="clienteNome" placeholder="Nome completo" />
-          </div>
-          <div class="field span-3">
-            <label>Telefone / WhatsApp</label>
-            <input id="clienteTelefone" placeholder="(xx) xxxxx-xxxx" />
-          </div>
-          <div class="field span-3">
-            <label>CPF / CNPJ</label>
-            <input id="clienteDoc" placeholder="Documento" />
-          </div>
-          <div class="field span-8">
-            <label>Endereço</label>
-            <input id="clienteEndereco" placeholder="Rua, número" />
-          </div>
-          <div class="field span-4">
-            <label>Cidade / Estado</label>
-            <input id="clienteCidade" placeholder="Ex.: Cacoal / RO" />
-          </div>
-          <div class="field span-6">
-            <label>BAIRRO</label>
-            <input id="clienteEmail" placeholder="bairro" type="email" />
-          </div>
-          <div class="field span-6">
-            <label>Complemento</label>
-            <input id="clienteComplemento" placeholder="Ap., bloco, referência..." />
-          </div>
+          <div class="field span-6"><label>Nome do cliente</label><input id="clienteNome" placeholder="Nome completo" /></div>
+          <div class="field span-3"><label>Telefone / WhatsApp</label><input id="clienteTelefone" placeholder="(xx) xxxxx-xxxx" /></div>
+          <div class="field span-3"><label>CPF / CNPJ</label><input id="clienteDoc" placeholder="Documento" /></div>
+          <div class="field span-8"><label>Endereço</label><input id="clienteEndereco" placeholder="Rua, número" /></div>
+          <div class="field span-4"><label>Cidade / Estado</label><input id="clienteCidade" placeholder="Ex.: Cacoal / RO" /></div>
+          <div class="field span-6"><label>Bairro</label><input id="clienteEmail" placeholder="Bairro" /></div>
+          <div class="field span-6"><label>Complemento</label><input id="clienteComplemento" placeholder="Ap., bloco, referência..." /></div>
         </div>
-
-        <h3>&#x1F4E6; Itens</h3>
-
-        <!-- CAMPOS DE ITEM — Tipo/Unidade logo após Produto/Descrição -->
+        <h3>📦 Itens</h3>
         <div class="row">
-          <div class="field span-3">
-            <label>Produto / Descrição</label>
-            <input id="itemProduto" placeholder="Ex.: Viga 6x12, Lâmina..." oninput="onProdutoChange()" />
-          </div>
-          <div class="field span-2">
-            <label>Tipo / Unidade</label>
+          <div class="field span-3"><label>Produto / Descrição</label><input id="itemProduto" placeholder="Ex.: Viga 6x12, Lâmina..." oninput="onProdutoChange()" /></div>
+          <div class="field span-2"><label>Tipo / Unidade</label>
             <select id="itemTipo" onchange="onTipoItemChange()">
               <option value="peca">Peça</option>
               <option value="lamina">Lâmina (preço/m)</option>
@@ -213,148 +286,87 @@
               <option value="un">Unidade</option>
             </select>
           </div>
-          <div class="field span-2" id="wrapEspessura" style="display:none">
-            <label>Espessura (m)</label>
-            <input id="itemEspessura" type="number" min="0" step="0.001" placeholder="Ex.: 0.025" />
-          </div>
-          <div class="field span-2" id="wrapLargura" style="display:none">
-            <label id="labelLargura">Largura (m)</label>
-            <input id="itemLargura" type="number" min="0" step="0.001" placeholder="Ex.: 0.30" />
-          </div>
-          <div class="field span-2">
-            <label id="labelComprimento">Comprimento (m)</label>
-            <input id="itemComprimento" type="number" min="0" step="0.01" placeholder="Ex.: 3.50" />
-          </div>
-          <div class="field span-1">
-            <label>Qtd.</label>
-            <input id="itemQtd" type="number" min="0.001" step="0.001" value="1" />
-          </div>
-          <div class="field span-1">
-            <label id="labelValorItem">R$/unid.</label>
-            <input id="itemValor" type="number" min="0" step="0.01" placeholder="0,00" />
-          </div>
-          <div class="field span-1">
-            <label>&nbsp;</label>
-            <button type="button" onclick="adicionarItem()" title="Adicionar item" style="padding:10px 6px">&#x2795;</button>
-          </div>
+          <div class="field span-2" id="wrapEspessura" style="display:none"><label>Espessura (m)</label><input id="itemEspessura" type="number" min="0" step="0.001" placeholder="Ex.: 0.025" /></div>
+          <div class="field span-2" id="wrapLargura" style="display:none"><label id="labelLargura">Largura (m)</label><input id="itemLargura" type="number" min="0" step="0.001" placeholder="Ex.: 0.30" /></div>
+          <div class="field span-2"><label id="labelComprimento">Comprimento (m)</label><input id="itemComprimento" type="number" min="0" step="0.01" placeholder="Ex.: 3.50" /></div>
+          <div class="field span-1"><label>Qtd.</label><input id="itemQtd" type="number" min="0.001" step="0.001" value="1" /></div>
+          <div class="field span-1"><label id="labelValorItem">R$/unid.</label><input id="itemValor" type="number" min="0" step="0.01" placeholder="0,00" /></div>
+          <div class="field span-1"><label>&nbsp;</label><button type="button" onclick="adicionarItem()" title="Adicionar item" style="padding:10px 6px">➕</button></div>
         </div>
         <div id="avisoLamina" class="aviso-lamina"></div>
-
         <div style="border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:4px">
           <table>
-            <thead>
-              <tr>
-                <th style="width:32px">#</th>
-                <th style="width:50px">Qtd.</th>
-                <th>Descrição</th>
-                <th>Dimensões</th>
-                <th>Tipo</th>
-                <th>Valor/Unid.</th>
-                <th>Total</th>
-                <th></th>
-              </tr>
-            </thead>
+            <thead><tr><th style="width:32px">#</th><th style="width:50px">Qtd.</th><th>Descrição</th><th>Dimensões</th><th>Tipo</th><th>Valor/Unid.</th><th>Total</th><th></th></tr></thead>
             <tbody id="tabelaItens"></tbody>
           </table>
         </div>
-
-        <h3>&#x1F4B3; Pagamento</h3>
+        <h3>💳 Pagamento</h3>
         <div class="row">
-          <div class="field span-4">
-            <label>Forma de pagamento</label>
+          <div class="field span-4"><label>Forma de pagamento</label>
             <select id="formaPagamento" onchange="onFormaPagamentoChange()">
-              <option>Dinheiro</option>
-              <option>Cheque</option>
-              <option>Pix</option>
-              <option>Boleto</option>
-              <option>Prazo / Fiado</option>
+              <option>Dinheiro</option><option>Cheque</option><option>Pix</option><option>Boleto</option><option>Prazo / Fiado</option>
             </select>
           </div>
-          <div class="field span-3">
-            <label>Desconto (%)</label>
-            <input id="pedidoDesconto" type="number" min="0" max="100" step="0.01" value="0" oninput="renderizarItens()" placeholder="0,00" />
-          </div>
-          <div class="field span-2">
-            <label>Desconto (R$)</label>
-            <input id="pedidoDescontoReais" readonly style="background:#fef9f0;border-color:#fcd34d;font-weight:700;color:#92400e" />
-          </div>
-          <div class="field span-3">
-            <label>Total</label>
-            <input id="pedidoTotal" readonly style="font-weight:700;font-size:16px;background:#f0fdf4;border-color:#86efac" />
-          </div>
+          <div class="field span-3"><label>Desconto (%)</label><input id="pedidoDesconto" type="number" min="0" max="100" step="0.01" value="0" oninput="renderizarItens()" placeholder="0,00" /></div>
+          <div class="field span-2"><label>Desconto (R$)</label><input id="pedidoDescontoReais" readonly style="background:#fef9f0;border-color:#fcd34d;font-weight:700;color:#92400e" /></div>
+          <div class="field span-3"><label>Total</label><input id="pedidoTotal" readonly style="font-weight:700;font-size:16px;background:#f0fdf4;border-color:#86efac" /></div>
         </div>
-
-        <div id="avisosCheque" style="display:none" class="info-badge">
-          &#x1F3E6; <strong>Cheque</strong> é lançado no caixa como entrada imediata (equivalente a Dinheiro).
-        </div>
-
-        <div id="blocoPix" class="pix-box" style="display:none">
-          <div class="pix-box-title">&#x1F511; Dados Pix desta venda (preenchido pelo vendedor)</div>
+        <div id="avisosCheque" style="display:none" class="info-badge">🏦 <strong>Cheque</strong> é lançado no caixa como entrada imediata (equivalente a Dinheiro).</div>
+        <div id="blocoParcelamento" class="bloco-parcelamento" style="display:none">
+          <div class="bp-title">📅 Condições de pagamento — Parcelamento</div>
           <div class="row">
-            <div class="field span-6">
-              <label>Chave Pix</label>
-              <input id="vendaPixChave" placeholder="CPF, telefone, e-mail ou chave aleatória" />
-            </div>
-            <div class="field span-3">
-              <label>Nome do recebedor</label>
-              <input id="vendaPixRecebedor" placeholder="Nome (max 25 car.)" maxlength="25" />
-            </div>
-            <div class="field span-3">
-              <label>Cidade</label>
-              <input id="vendaPixCidade" placeholder="Cidade (max 15)" maxlength="15" />
-            </div>
+            <div class="field span-4"><label>Entrada (R$) — pago agora</label><input id="parcEntrada" type="number" min="0" step="0.01" value="0" placeholder="0,00" oninput="parcRecalcular()" /></div>
+            <div class="field span-4"><label>Nº de parcelas</label><input id="parcQtd" type="number" min="1" max="60" step="1" value="1" oninput="parcGerarLinhas()" /></div>
+            <div class="field span-4"><label>1º vencimento</label><input id="parcPrimeiroVenc" type="date" oninput="parcGerarLinhas()" /></div>
           </div>
-          <div class="btns" style="margin-top:6px">
-            <button class="purple" type="button" onclick="gerarPixDoPedido()">&#x1F504; Gerar QR Code Pix</button>
+          <div id="parcLinhas"></div>
+          <div class="parcela-resumo" id="parcResumo" style="display:none">
+            <div>Total da nota: <span id="prTotalNota">—</span></div>
+            <div>Entrada: <span id="prEntrada">—</span></div>
+            <div>Total parcelado: <span id="prTotalParc">—</span></div>
+            <div>Saldo restante: <span id="prSaldo" class="pr-ok">—</span></div>
           </div>
+        </div>
+        <div id="blocoPix" class="pix-box" style="display:none">
+          <div class="pix-box-title">🔑 Dados Pix desta venda (preenchido pelo vendedor)</div>
+          <div class="row">
+            <div class="field span-6"><label>Chave Pix</label><input id="vendaPixChave" placeholder="CPF, telefone, e-mail ou chave aleatória" /></div>
+            <div class="field span-3"><label>Nome do recebedor</label><input id="vendaPixRecebedor" placeholder="Nome (max 25 car.)" maxlength="25" /></div>
+            <div class="field span-3"><label>Cidade</label><input id="vendaPixCidade" placeholder="Cidade (max 15)" maxlength="15" /></div>
+          </div>
+          <div class="btns" style="margin-top:6px"><button class="purple" type="button" onclick="gerarPixDoPedido()">🔄 Gerar QR Code Pix</button></div>
           <div id="qrDoPedidoWrapper" style="display:none;margin-top:12px">
             <div class="pix-preview">
               <img id="qrDoPedido" class="qr-img" alt="QR Code Pix" />
               <div class="copy-box" id="payloadDoPedido"></div>
-              <button class="secondary" type="button" onclick="copiarPixPedido()">&#x1F4CB; Copiar código Pix</button>
+              <button class="secondary" type="button" onclick="copiarPixPedido()">📋 Copiar código Pix</button>
             </div>
           </div>
         </div>
-
-        <div class="field span-12" style="margin-top:10px">
-          <label>Observações</label>
-          <textarea id="pedidoObs" placeholder="Ex.: entregar amanhã, retirar no balcão, frete incluso..."></textarea>
-        </div>
-
+        <div class="field span-12" style="margin-top:10px"><label>Observações</label><textarea id="pedidoObs" placeholder="Ex.: entregar amanhã, retirar no balcão, frete incluso..."></textarea></div>
         <div class="btns">
-          <button class="ok" onclick="salvarPedido()">&#x1F4BE; Salvar</button>
-          <button onclick="imprimirPedido()">&#x1F5A8;&#xFE0F; Imprimir (2 vias)</button>
-          <button class="secondary" onclick="novoPedido()">&#x1F195; Novo / Limpar</button>
-          <button class="danger" onclick="excluirPedidoAtual()" id="btnExcluir" style="display:none">&#x1F5D1;&#xFE0F; Excluir</button>
+          <button class="ok" onclick="salvarPedido()">💾 Salvar</button>
+          <button onclick="imprimirPedido()">🖨️ Imprimir (2 vias)</button>
+          <button class="secondary" onclick="novoPedido()">🆕 Novo / Limpar</button>
+          <button class="danger" onclick="excluirPedidoAtual()" id="btnExcluir" style="display:none">🗑️ Excluir</button>
         </div>
       </div>
-
       <div class="card">
         <h2>Documentos salvos</h2>
         <div class="toolbar">
           <input id="buscaPedido" placeholder="Buscar cliente ou nº" oninput="renderizarPedidos()" />
-          <button class="secondary" onclick="exportarJSON()">&#x1F4BE; Backup</button>
+          <button class="secondary" onclick="exportarJSON()">💾 Backup</button>
         </div>
         <div class="list" id="listaPedidos"></div>
-
-        <h2 style="margin-top:20px">&#x1F4B5; Resumo do caixa do dia</h2>
+        <h2 style="margin-top:20px">💵 Resumo do caixa do dia</h2>
         <div class="total-box" style="grid-template-columns:1fr 1fr">
-          <div class="mini">
-            <div class="label">&#x1F4B5; Dinheiro / Cheque</div>
-            <div class="value green" id="caixaEntradas">R$ 0,00</div>
-          </div>
-          <div class="mini">
-            <div class="label">&#x2796; Saídas</div>
-            <div class="value red" id="caixaSaidas">R$ 0,00</div>
-          </div>
-          <div class="mini" style="grid-column:span 2">
-            <div class="label">&#x1F3E6; Saldo do dia</div>
-            <div class="value blue" id="caixaSaldo">R$ 0,00</div>
-          </div>
+          <div class="mini"><div class="label">💵 Dinheiro / Cheque</div><div class="value green" id="caixaEntradas">R$ 0,00</div></div>
+          <div class="mini"><div class="label">➖ Saídas</div><div class="value red" id="caixaSaidas">R$ 0,00</div></div>
+          <div class="mini" style="grid-column:span 2"><div class="label">🏦 Saldo do dia</div><div class="value blue" id="caixaSaldo">R$ 0,00</div></div>
         </div>
         <div class="btns" style="margin-top:8px">
-          <button class="warn" onclick="abrirAba('abaCaixa', document.querySelectorAll('.tab-btn')[3])">&#x1F3E6; Ir para Caixa</button>
-          <button class="purple" onclick="abrirAba('abaCaixaPix', document.querySelectorAll('.tab-btn')[4])">&#x1F4F2; Ir para Caixa Pix</button>
+          <button class="warn" onclick="abrirAba('abaCaixa', document.querySelectorAll('.tab-btn')[3])">🏦 Ir para Caixa</button>
+          <button class="purple" onclick="abrirAba('abaCaixaPix', document.querySelectorAll('.tab-btn')[4])">📲 Ir para Caixa Pix</button>
         </div>
       </div>
     </div>
@@ -378,9 +390,9 @@
           <div class="field span-6"><label>Observações</label><input id="finObs" placeholder="Ex.: entrada, saldo, entrega" /></div>
         </div>
         <div class="btns">
-          <button class="ok" onclick="gerarPixFinanceiro()">&#x1F4F2; Gerar QR Code</button>
-          <button class="warn" onclick="salvarCobranca()">&#x1F4BE; Salvar cobrança Pix</button>
-          <button class="secondary" onclick="limparFinanceiro()">&#x1F195; Novo / Limpar</button>
+          <button class="ok" onclick="gerarPixFinanceiro()">📲 Gerar QR Code</button>
+          <button class="warn" onclick="salvarCobranca()">💾 Salvar cobrança Pix</button>
+          <button class="secondary" onclick="limparFinanceiro()">🆕 Novo / Limpar</button>
         </div>
       </div>
       <div class="card">
@@ -388,11 +400,9 @@
         <div class="pix-preview">
           <img id="qrFinanceiro" class="qr-img" alt="QR Code Pix" />
           <div class="copy-box" id="payloadFinanceiro">O código Pix aparecerá aqui.</div>
-          <button class="secondary" onclick="copiarPix('payloadFinanceiro')">&#x1F4CB; Copiar Pix</button>
+          <button class="secondary" onclick="copiarPix('payloadFinanceiro')">📋 Copiar Pix</button>
         </div>
-        <div class="info-badge">
-          &#x1F4A1; Preencha os dados do pedido e do recebedor, depois clique em <strong>Gerar QR Code</strong>. Salve a cobrança para a equipe de vendas encontrar na aba <strong>Vendas Pix</strong>.
-        </div>
+        <div class="info-badge">💡 Preencha os dados do pedido e do recebedor, depois clique em <strong>Gerar QR Code</strong>.</div>
       </div>
     </div>
   </div>
@@ -404,13 +414,13 @@
         <h2>Cobranças Pix salvas</h2>
         <div class="toolbar">
           <input id="buscaCobranca" placeholder="Buscar cliente, pedido ou TXID" oninput="renderizarCobrancas()" />
-          <button class="secondary" onclick="renderizarCobrancas()">&#x1F504; Atualizar</button>
+          <button class="secondary" onclick="renderizarCobrancas()">🔄 Atualizar</button>
         </div>
         <div class="list" id="listaCobrancas"></div>
       </div>
       <div class="card">
         <h2>Mostrar para o cliente</h2>
-        <div id="detalheVazio" class="muted">Selecione uma cobrança. Aqui o vendedor só mostra o QR Code para o cliente apontar o celular.</div>
+        <div id="detalheVazio" class="muted">Selecione uma cobrança.</div>
         <div id="detalheCobranca" style="display:none">
           <div style="margin-bottom:12px">
             <strong id="detCliente" style="font-size:16px"></strong><br>
@@ -421,8 +431,8 @@
             <img id="qrVendas" class="qr-img" alt="QR Code Pix salvo" />
             <div class="copy-box" id="payloadVendas"></div>
             <div class="btns" style="margin-top:0">
-              <button class="secondary" onclick="copiarPix('payloadVendas')">&#x1F4CB; Copiar Pix</button>
-              <button class="ok" onclick="marcarCobrancaComoPaga()">&#x2705; Marcar como pago</button>
+              <button class="secondary" onclick="copiarPix('payloadVendas')">📋 Copiar Pix</button>
+              <button class="ok" onclick="marcarCobrancaComoPaga()">✅ Marcar como pago</button>
             </div>
           </div>
           <div style="border:1px solid var(--line);border-radius:10px;padding:12px;font-size:13px;margin-top:10px">
@@ -441,32 +451,30 @@
   <div id="abaCaixa" class="tab-panel">
     <div class="grid-2">
       <div class="card">
-        <h2>&#x1F3E6; Caixa — Movimentações (Dinheiro / Cheque)</h2>
+        <h2>🏦 Caixa — Movimentações (Dinheiro / Cheque)</h2>
         <div class="row">
           <div class="field span-4"><label>Filtrar por data</label><input id="filtroCaixaData" type="date" oninput="renderizarCaixaCompleto()" /></div>
           <div class="field span-4"><label>Filtrar por tipo</label>
             <select id="filtroCaixaTipo" onchange="renderizarCaixaCompleto()">
-              <option value="">Todos</option>
-              <option value="entrada">Entradas</option>
-              <option value="saida">Saídas</option>
+              <option value="">Todos</option><option value="entrada">Entradas</option><option value="saida">Saídas</option>
             </select>
           </div>
-          <div class="field span-4"><label>&nbsp;</label><button onclick="filtroCaixaHoje()">&#x1F4C5; Hoje</button></div>
+          <div class="field span-4"><label>&nbsp;</label><button onclick="filtroCaixaHoje()">📅 Hoje</button></div>
         </div>
         <div class="total-box" style="margin-bottom:12px;grid-template-columns:repeat(4,1fr)">
-          <div class="mini"><div class="label">&#x1F4B5; Entradas</div><div class="value green" id="caixaEntradasFiltro">R$ 0,00</div></div>
-          <div class="mini"><div class="label">&#x2796; Saídas</div><div class="value red" id="caixaSaidasFiltro">R$ 0,00</div></div>
-          <div class="mini"><div class="label">&#x1F3E6; Saldo</div><div class="value blue" id="caixaSaldoFiltro">R$ 0,00</div></div>
+          <div class="mini"><div class="label">💵 Entradas</div><div class="value green" id="caixaEntradasFiltro">R$ 0,00</div></div>
+          <div class="mini"><div class="label">➖ Saídas</div><div class="value red" id="caixaSaidasFiltro">R$ 0,00</div></div>
+          <div class="mini"><div class="label">🏦 Saldo</div><div class="value blue" id="caixaSaldoFiltro">R$ 0,00</div></div>
           <div class="mini"><div class="label">Movimentos</div><div class="value" id="caixaQuantFiltro">0</div></div>
         </div>
         <div id="listaCaixaMovimentos" style="max-height:380px;overflow:auto;border:1px solid var(--line);border-radius:12px"></div>
-        <h3>&#x2795; Registrar entrada manual</h3>
+        <h3>➕ Registrar entrada manual</h3>
         <div class="row">
           <div class="field span-6"><label>Descrição</label><input id="entradaDescricao" /></div>
           <div class="field span-3"><label>Valor</label><input id="entradaValor" type="number" step="0.01" /></div>
           <div class="field span-3"><button class="ok" onclick="registrarEntrada()">+ Entrada</button></div>
         </div>
-        <h3>&#x2796; Registrar saída</h3>
+        <h3>➖ Registrar saída</h3>
         <div class="row">
           <div class="field span-6"><label>Descrição</label><input id="saidaDescricao" /></div>
           <div class="field span-3"><label>Valor</label><input id="saidaValor" type="number" step="0.01" /></div>
@@ -474,7 +482,7 @@
         </div>
       </div>
       <div class="card">
-        <h2>&#x1F4CA; Fechamento de Caixa</h2>
+        <h2>📊 Fechamento de Caixa</h2>
         <div class="row">
           <div class="field span-6"><label>Data início</label><input id="fechDataInicio" type="date" /></div>
           <div class="field span-6"><label>Data fim</label><input id="fechDataFim" type="date" /></div>
@@ -482,12 +490,12 @@
           <div class="field span-12"><label>Observações</label><textarea id="fechObs"></textarea></div>
         </div>
         <div class="btns">
-          <button class="ok" onclick="gerarFechamento()">&#x1F4CA; Gerar fechamento</button>
-          <button onclick="imprimirFechamento()" id="btnImprimirFechamento" style="display:none">&#x1F5A8;&#xFE0F; Imprimir</button>
-          <button class="secondary" onclick="exportarJSON()">&#x1F4BE; Backup</button>
+          <button class="ok" onclick="gerarFechamento()">📊 Gerar fechamento</button>
+          <button onclick="imprimirFechamento()" id="btnImprimirFechamento" style="display:none">🖨️ Imprimir</button>
+          <button class="secondary" onclick="exportarJSON()">💾 Backup</button>
         </div>
         <div id="resumoFechamento" style="display:none"><div id="conteudoFechamento"></div></div>
-        <h3>&#x270F;&#xFE0F; Editar movimentação</h3>
+        <h3>✏️ Editar movimentação</h3>
         <div class="info-badge">Selecione uma movimentação na lista à esquerda e edite abaixo.</div>
         <div id="editMovWrapper" style="display:none">
           <div class="row">
@@ -497,8 +505,8 @@
           </div>
           <input type="hidden" id="editMovId" />
           <div class="btns">
-            <button class="ok" onclick="salvarEdicaoMov()">&#x1F4BE; Salvar edição</button>
-            <button class="danger" onclick="excluirMov()">&#x1F5D1;&#xFE0F; Excluir</button>
+            <button class="ok" onclick="salvarEdicaoMov()">💾 Salvar edição</button>
+            <button class="danger" onclick="excluirMov()">🗑️ Excluir</button>
             <button class="secondary" onclick="cancelarEdicaoMov()">Cancelar</button>
           </div>
         </div>
@@ -510,26 +518,26 @@
   <div id="abaCaixaPix" class="tab-panel">
     <div class="grid-2">
       <div class="card" style="border-top:4px solid var(--purple)">
-        <h2 style="color:var(--purple)">&#x1F4F2; Caixa Pix — Movimentações</h2>
+        <h2 style="color:var(--purple)">📲 Caixa Pix — Movimentações</h2>
         <div class="row">
           <div class="field span-4"><label>Filtrar por data</label><input id="filtroCaixaPixData" type="date" oninput="renderizarCaixaPixCompleto()" /></div>
-          <div class="field span-4"><label>&nbsp;</label><button class="purple" onclick="filtroCaixaPixHoje()">&#x1F4C5; Hoje</button></div>
+          <div class="field span-4"><label>&nbsp;</label><button class="purple" onclick="filtroCaixaPixHoje()">📅 Hoje</button></div>
         </div>
         <div class="total-box" style="margin-bottom:12px;grid-template-columns:repeat(3,1fr)">
-          <div class="mini" style="border-color:#c4b5fd"><div class="label">&#x1F4F2; Entradas Pix</div><div class="value" style="color:var(--purple)" id="caixaPixEntradasFiltro">R$ 0,00</div></div>
-          <div class="mini" style="border-color:#c4b5fd"><div class="label">&#x1F3E6; Saldo Pix</div><div class="value" style="color:var(--purple)" id="caixaPixSaldoFiltro">R$ 0,00</div></div>
+          <div class="mini" style="border-color:#c4b5fd"><div class="label">📲 Entradas Pix</div><div class="value" style="color:var(--purple)" id="caixaPixEntradasFiltro">R$ 0,00</div></div>
+          <div class="mini" style="border-color:#c4b5fd"><div class="label">🏦 Saldo Pix</div><div class="value" style="color:var(--purple)" id="caixaPixSaldoFiltro">R$ 0,00</div></div>
           <div class="mini" style="border-color:#c4b5fd"><div class="label">Movimentos</div><div class="value" id="caixaPixQuantFiltro">0</div></div>
         </div>
         <div id="listaCaixaPixMovimentos" style="max-height:400px;overflow:auto;border:1px solid #c4b5fd;border-radius:12px"></div>
-        <h3 style="color:var(--purple)">&#x2795; Registrar entrada Pix manual</h3>
+        <h3 style="color:var(--purple)">➕ Registrar entrada Pix manual</h3>
         <div class="row">
           <div class="field span-6"><label>Descrição</label><input id="pixEntradaDescricao" placeholder="Ex.: Pix recebido avulso" /></div>
           <div class="field span-3"><label>Valor</label><input id="pixEntradaValor" type="number" step="0.01" /></div>
-          <div class="field span-3"><button class="purple" onclick="registrarEntradaPix()">&#x1F4F2; + Pix</button></div>
+          <div class="field span-3"><button class="purple" onclick="registrarEntradaPix()">📲 + Pix</button></div>
         </div>
       </div>
       <div class="card" style="border-top:4px solid var(--purple)">
-        <h2 style="color:var(--purple)">&#x1F4CA; Fechamento Caixa Pix</h2>
+        <h2 style="color:var(--purple)">📊 Fechamento Caixa Pix</h2>
         <div class="row">
           <div class="field span-6"><label>Data início</label><input id="fechPixDataInicio" type="date" /></div>
           <div class="field span-6"><label>Data fim</label><input id="fechPixDataFim" type="date" /></div>
@@ -537,11 +545,11 @@
           <div class="field span-12"><label>Observações</label><textarea id="fechPixObs"></textarea></div>
         </div>
         <div class="btns">
-          <button class="purple" onclick="gerarFechamentoPix()">&#x1F4CA; Gerar fechamento Pix</button>
-          <button onclick="imprimirFechamentoPix()" id="btnImprimirFechamentoPix" style="display:none">&#x1F5A8;&#xFE0F; Imprimir</button>
+          <button class="purple" onclick="gerarFechamentoPix()">📊 Gerar fechamento Pix</button>
+          <button onclick="imprimirFechamentoPix()" id="btnImprimirFechamentoPix" style="display:none">🖨️ Imprimir</button>
         </div>
         <div id="resumoFechamentoPix" style="display:none"><div id="conteudoFechamentoPix"></div></div>
-        <h3 style="color:var(--purple)">&#x270F;&#xFE0F; Editar movimentação Pix</h3>
+        <h3 style="color:var(--purple)">✏️ Editar movimentação Pix</h3>
         <div class="info-badge" style="border-color:#c4b5fd;background:#f5f3ff;color:#6d28d9">Selecione uma movimentação na lista à esquerda para editar.</div>
         <div id="editMovPixWrapper" style="display:none">
           <div class="row">
@@ -551,11 +559,153 @@
           </div>
           <input type="hidden" id="editMovPixId" />
           <div class="btns">
-            <button class="ok" onclick="salvarEdicaoMovPix()">&#x1F4BE; Salvar</button>
-            <button class="danger" onclick="excluirMovPix()">&#x1F5D1;&#xFE0F; Excluir</button>
+            <button class="ok" onclick="salvarEdicaoMovPix()">💾 Salvar</button>
+            <button class="danger" onclick="excluirMovPix()">🗑️ Excluir</button>
             <button class="secondary" onclick="cancelarEdicaoMovPix()">Cancelar</button>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABA CONTAS A RECEBER -->
+  <div id="abaContasReceber" class="tab-panel">
+    <div class="grid-2">
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <div class="cr-resumo-top">
+          <div class="mini" style="border-color:#fca5a5;background:#fff1f2"><div class="label">⚠️ Vencidas</div><div class="value red" id="crTotalVencido">R$ 0,00</div><div style="font-size:11px;color:var(--muted)" id="crQtdVencido">0 conta(s)</div></div>
+          <div class="mini" style="border-color:#fcd34d;background:#fffbeb"><div class="label">⏳ A Receber</div><div class="value" style="color:var(--warn)" id="crTotalAberto">R$ 0,00</div><div style="font-size:11px;color:var(--muted)" id="crQtdAberto">0 conta(s)</div></div>
+          <div class="mini" style="border-color:#6ee7b7;background:#f0fdf4"><div class="label">✅ Recebido</div><div class="value green" id="crTotalRecebido">R$ 0,00</div><div style="font-size:11px;color:var(--muted)" id="crQtdQuitado">0 quitada(s)</div></div>
+        </div>
+        <div class="card">
+          <h2>📋 Contas a Receber</h2>
+          <div class="info-badge" style="margin-bottom:10px">💡 As contas são criadas automaticamente ao salvar um pedido com pagamento <strong>Boleto</strong> ou <strong>Prazo / Fiado</strong>.</div>
+          <div class="toolbar">
+            <input id="crBusca" placeholder="Buscar cliente, pedido..." oninput="renderizarContasReceber()" style="flex:1" />
+            <select id="crFiltroStatus" onchange="renderizarContasReceber()" style="padding:10px 10px;border:1.5px solid var(--line);border-radius:10px;font-size:13px;background:white">
+              <option value="">Todas</option><option value="aberto">Em aberto</option><option value="vencido">Vencidas</option><option value="parcial">Parcialmente pagas</option><option value="quitado">Quitadas</option>
+            </select>
+          </div>
+          <div id="crListaContas" class="cr-card-lista"><div style="padding:18px;text-align:center;color:var(--muted)">Nenhuma conta cadastrada.</div></div>
+        </div>
+      </div>
+      <div class="card" id="crDetalheCard">
+        <div id="crDetalheVazio" style="padding:30px;text-align:center;color:var(--muted)">
+          <div style="font-size:48px;margin-bottom:10px">📋</div>
+          <div style="font-size:15px;font-weight:700">Selecione uma conta</div>
+          <div style="font-size:13px;margin-top:6px">Clique em uma conta à esquerda para ver o extrato e registrar pagamentos.</div>
+        </div>
+        <div id="crDetalheConteudo" style="display:none">
+          <h2 id="crDetTitulo" style="margin-bottom:4px"></h2>
+          <div id="crDetSubtitulo" style="font-size:13px;color:var(--muted);margin-bottom:14px"></div>
+          <div id="crAlertaVencido" class="cr-alerta-venc" style="display:none">⚠️ Esta conta possui parcelas <strong>vencidas</strong>! Entre em contato com o cliente.</div>
+          <div class="cr-totais-bar">
+            <div class="mini"><div class="label">💰 Total nota</div><div class="value blue" id="crDetTotal"></div></div>
+            <div class="mini" style="background:#f0fdf4;border-color:#6ee7b7"><div class="label">✅ Pago</div><div class="value green" id="crDetPago"></div></div>
+            <div class="mini" style="background:#fffbeb;border-color:#fcd34d"><div class="label">⏳ Restante</div><div class="value" style="color:var(--warn)" id="crDetRestante"></div></div>
+          </div>
+          <div class="cr-progress-wrap" style="height:12px;margin-bottom:4px"><div class="cr-progress-bar" id="crDetProgressBar" style="width:0%"></div></div>
+          <div class="cr-progress-label"><span id="crDetProgressPct">0% pago</span><span id="crDetStatusBadge"></span></div>
+          <h3>📅 Parcelas e histórico de pagamentos</h3>
+          <div style="border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:14px"><div id="crParcelasDetalhe"></div></div>
+          <h3>💵 Registrar recebimento</h3>
+          <div class="row">
+            <div class="field span-5"><label>Valor recebido (R$)</label><input id="crPagValor" type="number" step="0.01" min="0.01" placeholder="0,00" /></div>
+            <div class="field span-4"><label>Data pagamento</label><input id="crPagData" type="date" /></div>
+            <div class="field span-3"><label>Forma</label>
+              <select id="crPagForma" style="padding:10px 8px;border:1.5px solid var(--line);border-radius:10px;font-size:13px;background:white">
+                <option>Dinheiro</option><option>Pix</option><option>Cheque</option><option>Boleto</option>
+              </select>
+            </div>
+            <div class="field span-12"><label>Observação</label><input id="crPagObs" placeholder="Ex.: pagou no balcão, cheque nº 123..." /></div>
+          </div>
+          <div class="btns">
+            <button class="ok" onclick="crRegistrarPagamento()">✅ Confirmar recebimento</button>
+            <button onclick="crImprimirDetalhe()">🖨️ Imprimir extrato</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════════
+       ABA RESUMO DO DIA — REESCRITA COMPLETA
+  ════════════════════════════════════════════════════════════ -->
+  <div id="abaResumoDia" class="tab-panel">
+
+    <!-- Barra de filtros -->
+    <div class="card" style="margin-bottom:14px;padding:14px 18px">
+      <div style="display:flex;align-items:center;flex-wrap:wrap;gap:12px">
+        <div style="font-size:16px;font-weight:700;color:var(--accent);white-space:nowrap">📊 Resumo do Dia</div>
+        <div class="rd-filtros" style="flex:1;margin-bottom:0">
+          <label style="font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;white-space:nowrap">Data:</label>
+          <input id="resumoDiaData" type="date" oninput="renderizarResumoDia()" style="max-width:160px" />
+          <button onclick="resumoDiaHoje()" style="white-space:nowrap">📅 Hoje</button>
+          <button class="secondary" onclick="renderizarResumoDia()" style="white-space:nowrap">🔄 Atualizar</button>
+          <select id="rdFiltroTipo" onchange="renderizarResumoDia()" title="Filtrar por tipo de movimentação">
+            <option value="">Todos os tipos</option>
+            <option value="notas">Apenas notas/pedidos</option>
+            <option value="caixa">Apenas caixa</option>
+            <option value="pix">Apenas Pix</option>
+            <option value="saida">Apenas saídas</option>
+            <option value="cr">Apenas recebimentos CR</option>
+          </select>
+          <button onclick="imprimirResumoDia()" style="white-space:nowrap">🖨️ Imprimir</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Totais do topo (4 cards) -->
+    <div class="rd-totais-top" id="rdTotaisTop"></div>
+
+    <!-- Saldo líquido em dinheiro -->
+    <div id="rdSaldoBox" class="rd-saldo-box positivo" style="margin-bottom:16px">
+      <div>
+        <div class="sb-label">💰 SALDO LÍQUIDO DO DIA (Dinheiro + Cheque)</div>
+        <div class="sb-sub" id="rdSaldoSub">Entradas menos saídas</div>
+      </div>
+      <div class="sb-valor" id="rdSaldoValor">R$ 0,00</div>
+    </div>
+
+    <div class="rd-grid">
+      <!-- COLUNA ESQUERDA: formas de pagamento das notas + resumo caixa -->
+      <div style="display:flex;flex-direction:column;gap:14px">
+
+        <!-- Cards de formas de pagamento (notas emitidas) -->
+        <div class="card">
+          <h2>🧾 Notas / Pedidos emitidos</h2>
+          <div id="rdFormasPagamento"><div class="rd-empty">Nenhuma nota encontrada.</div></div>
+          <div class="resumo-total-dia" id="rdTotalNotasBox" style="margin-top:14px;margin-bottom:0">
+            <div>
+              <div class="rt-label">💰 TOTAL DE NOTAS</div>
+              <div class="rt-quant" id="rdTotalNotasQuant">0 nota(s)</div>
+            </div>
+            <div class="rt-valor" id="rdTotalNotasValor">R$ 0,00</div>
+          </div>
+        </div>
+
+        <!-- Resumo caixa + pix -->
+        <div class="card">
+          <h2>🏦 Resumo de caixa</h2>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+            <div class="rd-mini verde"><div class="rd-label">💵 Entradas Caixa</div><div class="rd-val" id="rdCaixaEntradas">R$ 0,00</div><div class="rd-sub" id="rdCaixaEntradasQt">0 mov.</div></div>
+            <div class="rd-mini vermelho"><div class="rd-label">➖ Saídas Caixa</div><div class="rd-val" id="rdCaixaSaidas">R$ 0,00</div><div class="rd-sub" id="rdCaixaSaidasQt">0 mov.</div></div>
+            <div class="rd-mini roxo"><div class="rd-label">📲 Pix Recebidos</div><div class="rd-val" id="rdPixTotal">R$ 0,00</div><div class="rd-sub" id="rdPixQt">0 mov.</div></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- COLUNA DIREITA: lista completa de movimentações -->
+      <div class="card">
+        <h2>📋 Todas as movimentações do dia</h2>
+        <div class="rd-filtros" style="margin-bottom:12px">
+          <input id="rdBuscaMov" placeholder="Buscar descrição, cliente..." oninput="renderizarResumoDia()" style="flex:1" />
+        </div>
+        <div class="rd-mov-lista" id="rdMovLista">
+          <div class="rd-empty">Nenhuma movimentação encontrada.</div>
+        </div>
+        <div style="margin-top:10px;font-size:12px;color:var(--muted);display:flex;justify-content:space-between" id="rdRodape"></div>
       </div>
     </div>
   </div>
@@ -564,7 +714,7 @@
   <div id="abaConfig" class="tab-panel">
     <div class="grid-2">
       <div class="card">
-        <h2>&#x2699;&#xFE0F; Dados da Empresa / Loja</h2>
+        <h2>⚙️ Dados da Empresa / Loja</h2>
         <div class="row">
           <div class="field span-12"><label>Nome da empresa</label><input id="cfgEmpresa" /></div>
           <div class="field span-6"><label>CNPJ / CPF</label><input id="cfgCNPJ" /></div>
@@ -575,10 +725,10 @@
           <div class="field span-6"><label>Cidade padrão (Pix)</label><input id="cfgPixCidade" maxlength="15" /></div>
           <div class="field span-12"><label>Mensagem no rodapé</label><textarea id="cfgRodape"></textarea></div>
         </div>
-        <div class="btns"><button class="ok" onclick="salvarConfig()">&#x1F4BE; Salvar configurações</button></div>
+        <div class="btns"><button class="ok" onclick="salvarConfig()">💾 Salvar configurações</button></div>
       </div>
       <div class="card">
-        <h2>&#x1F527; Dados salvos</h2>
+        <h2>🔧 Dados salvos</h2>
         <div id="configPreview" class="muted">Nenhuma configuração salva ainda.</div>
       </div>
     </div>
@@ -588,247 +738,208 @@
 <div class="print-area" id="printArea"></div>
 
 <script>
-  const STORAGE_PEDIDOS = 'sistampix_pedidos_v3';
-  const STORAGE_CAIXA = 'sistampix_caixa_v2';
+  const STORAGE_PEDIDOS   = 'sistampix_pedidos_v3';
+  const STORAGE_CAIXA     = 'sistampix_caixa_v2';
   const STORAGE_COBRANCAS = 'sistampix_cobrancas_v2';
-  const STORAGE_CONFIG = 'sistampix_config_v1';
+  const STORAGE_CONFIG    = 'sistampix_config_v1';
+  const STORAGE_CR        = 'sistampix_contas_receber_v1';
+
   let itens = [];
   let pedidoEditando = null;
   let cobrancaSelecionadaId = null;
-  let movSelecionadaId = null;
+  let crContaSelecionadaId = null;
 
+  /* ── helpers ── */
   function hojeISO(){ const d=new Date(); return new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,10); }
   function formatarBRL(v){ return Number(v||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'}); }
-  function formatarData(iso){ if(!iso) return '-'; const [y,m,d]=iso.split('-'); return `${d}/${m}/${y}`; }
-  function tipoLabel(tipo){ const map={peca:'Peça',lamina:'Lâmina/m',jogo:'Jogo',m2:'m²',m3:'m³',ml:'Metro linear',kg:'Kg',un:'Unidade'}; return map[tipo]||tipo; }
-  function obterPedidos(){ return JSON.parse(localStorage.getItem(STORAGE_PEDIDOS)||'[]'); }
-  function salvarPedidos(l){ localStorage.setItem(STORAGE_PEDIDOS,JSON.stringify(l)); }
-  function obterCaixa(){ return JSON.parse(localStorage.getItem(STORAGE_CAIXA)||'[]'); }
-  function salvarCaixa(l){ localStorage.setItem(STORAGE_CAIXA,JSON.stringify(l)); }
-  function obterCobrancas(){ return JSON.parse(localStorage.getItem(STORAGE_COBRANCAS)||'[]'); }
-  function salvarCobrancas(l){ localStorage.setItem(STORAGE_COBRANCAS,JSON.stringify(l)); }
-  function obterConfig(){ return JSON.parse(localStorage.getItem(STORAGE_CONFIG)||'{}'); }
+  function formatarData(iso){ if(!iso)return'-'; const [y,m,d]=iso.split('-'); return `${d}/${m}/${y}`; }
+  function tipoLabel(t){ return {peca:'Peça',lamina:'Lâmina/m',jogo:'Jogo',m2:'m²',m3:'m³',ml:'Metro linear',kg:'Kg',un:'Unidade'}[t]||t; }
+
+  /* ── storage ── */
+  function obterPedidos()      { return JSON.parse(localStorage.getItem(STORAGE_PEDIDOS)||'[]'); }
+  function salvarPedidos(l)    { localStorage.setItem(STORAGE_PEDIDOS,JSON.stringify(l)); }
+  function obterCaixa()        { return JSON.parse(localStorage.getItem(STORAGE_CAIXA)||'[]'); }
+  function salvarCaixa(l)      { localStorage.setItem(STORAGE_CAIXA,JSON.stringify(l)); }
+  function obterCobrancas()    { return JSON.parse(localStorage.getItem(STORAGE_COBRANCAS)||'[]'); }
+  function salvarCobrancas(l)  { localStorage.setItem(STORAGE_COBRANCAS,JSON.stringify(l)); }
+  function obterConfig()       { return JSON.parse(localStorage.getItem(STORAGE_CONFIG)||'{}'); }
   function salvarConfigStorage(c){ localStorage.setItem(STORAGE_CONFIG,JSON.stringify(c)); }
+  function obterContasReceber(){ return JSON.parse(localStorage.getItem(STORAGE_CR)||'[]'); }
+  function salvarContasReceber(l){ localStorage.setItem(STORAGE_CR,JSON.stringify(l)); }
 
+  /* ── item type UI ── */
   function onTipoItemChange(){
-    const tipo = document.getElementById('itemTipo').value;
-    const aviso = document.getElementById('avisoLamina');
-    const labelVal = document.getElementById('labelValorItem');
-    const labelComp = document.getElementById('labelComprimento');
-    const wrapEsp = document.getElementById('wrapEspessura');
-    const wrapLar = document.getElementById('wrapLargura');
-
-    wrapEsp.style.display = 'none';
-    wrapLar.style.display = 'none';
-    aviso.style.display = 'none';
-
-    if(tipo === 'lamina'){
-      aviso.style.display = 'block';
-      aviso.innerHTML = '&#x1F4CF; <strong>Lâmina:</strong> Total = Qtd &times; Comprimento (m) &times; Valor/metro';
-      labelVal.textContent = 'R$/metro';
-      labelComp.textContent = 'Comprimento (m) *';
-    } else if(tipo === 'ml'){
-      aviso.style.display = 'block';
-      aviso.innerHTML = '&#x1F4D0; <strong>Metro linear:</strong> Total = Qtd &times; Metragem (m) &times; Valor/metro';
-      labelVal.textContent = 'R$/metro';
-      labelComp.textContent = 'Metragem (m) *';
-    } else if(tipo === 'm2'){
-      wrapLar.style.display = 'flex';
-      aviso.style.display = 'block';
-      aviso.innerHTML = '&#x1F4D0; <strong>m&sup2;:</strong> Total = Qtd &times; Largura (m) &times; Comprimento (m) &times; Valor/m&sup2;';
-      labelVal.textContent = 'R$/m²';
-      labelComp.textContent = 'Comprimento (m) *';
-      document.getElementById('labelLargura').textContent = 'Largura (m) *';
-    } else if(tipo === 'm3'){
-      wrapEsp.style.display = 'flex';
-      wrapLar.style.display = 'flex';
-      aviso.style.display = 'block';
-      aviso.innerHTML = '&#x1F4E6; <strong>m&sup3;:</strong> Total = Qtd &times; Espessura (m) &times; Largura (m) &times; Comprimento (m) &times; Valor/m&sup3;';
-      labelVal.textContent = 'R$/m³';
-      labelComp.textContent = 'Comprimento (m) *';
-      document.getElementById('labelLargura').textContent = 'Largura (m) *';
-    } else {
-      labelVal.textContent = 'R$/unid.';
-      labelComp.textContent = 'Comprimento (m)';
-    }
+    const tipo=document.getElementById('itemTipo').value;
+    const aviso=document.getElementById('avisoLamina');
+    const labelVal=document.getElementById('labelValorItem');
+    const labelComp=document.getElementById('labelComprimento');
+    const wrapEsp=document.getElementById('wrapEspessura');
+    const wrapLar=document.getElementById('wrapLargura');
+    wrapEsp.style.display='none'; wrapLar.style.display='none'; aviso.style.display='none';
+    if(tipo==='lamina'){ aviso.style.display='block'; aviso.innerHTML='📏 <strong>Lâmina:</strong> Total = Qtd × Comprimento (m) × Valor/metro'; labelVal.textContent='R$/metro'; labelComp.textContent='Comprimento (m) *'; }
+    else if(tipo==='ml'){ aviso.style.display='block'; aviso.innerHTML='📐 <strong>Metro linear:</strong> Total = Qtd × Metragem (m) × Valor/metro'; labelVal.textContent='R$/metro'; labelComp.textContent='Metragem (m) *'; }
+    else if(tipo==='m2'){ wrapLar.style.display='flex'; aviso.style.display='block'; aviso.innerHTML='📐 <strong>m²:</strong> Total = Qtd × Largura × Comprimento × Valor/m²'; labelVal.textContent='R$/m²'; labelComp.textContent='Comprimento (m) *'; document.getElementById('labelLargura').textContent='Largura (m) *'; }
+    else if(tipo==='m3'){ wrapEsp.style.display='flex'; wrapLar.style.display='flex'; aviso.style.display='block'; aviso.innerHTML='📦 <strong>m³:</strong> Total = Qtd × Espessura × Largura × Comprimento × Valor/m³'; labelVal.textContent='R$/m³'; labelComp.textContent='Comprimento (m) *'; document.getElementById('labelLargura').textContent='Largura (m) *'; }
+    else { labelVal.textContent='R$/unid.'; labelComp.textContent='Comprimento (m)'; }
   }
-
-  function onProdutoChange(){
-    const prod = document.getElementById('itemProduto').value.toLowerCase();
-    if(prod.includes('lâmina') || prod.includes('lamina')){
-      document.getElementById('itemTipo').value = 'lamina';
-      onTipoItemChange();
-    }
-  }
-
-  function calcularTotalItem(item){
-    const qtd = item.qtd || 0;
-    const comp = Number(item.comprimento) || 0;
-    const larg = Number(item.largura) || 0;
-    const esp  = Number(item.espessura) || 0;
-    const val  = item.valor || 0;
-    if(item.tipo === 'lamina' || item.tipo === 'ml'){ return qtd * comp * val; }
-    if(item.tipo === 'm2'){ return qtd * larg * comp * val; }
-    if(item.tipo === 'm3'){ return qtd * esp * larg * comp * val; }
-    return qtd * val;
-  }
+  function onProdutoChange(){ const p=document.getElementById('itemProduto').value.toLowerCase(); if(p.includes('lâmina')||p.includes('lamina')){ document.getElementById('itemTipo').value='lamina'; onTipoItemChange(); } }
+  function calcularTotalItem(item){ const qtd=item.qtd||0; const comp=Number(item.comprimento)||0; const larg=Number(item.largura)||0; const esp=Number(item.espessura)||0; const val=item.valor||0; if(item.tipo==='lamina'||item.tipo==='ml') return qtd*comp*val; if(item.tipo==='m2') return qtd*larg*comp*val; if(item.tipo==='m3') return qtd*esp*larg*comp*val; return qtd*val; }
 
   function adicionarItem(){
-    const produto    = document.getElementById('itemProduto').value.trim();
-    const comprimento= document.getElementById('itemComprimento').value;
-    const largura    = document.getElementById('itemLargura').value;
-    const espessura  = document.getElementById('itemEspessura').value;
-    const qtd        = Number(document.getElementById('itemQtd').value);
-    const tipo       = document.getElementById('itemTipo').value;
-    const valor      = Number(document.getElementById('itemValor').value);
-
-    if(!produto){ alert('Informe o produto.'); return; }
-    if(!qtd||qtd<=0){ alert('Informe a quantidade.'); return; }
-    if(isNaN(valor)||valor<0){ alert('Informe o valor unitário.'); return; }
-    if((tipo==='lamina'||tipo==='ml')&&(!comprimento||Number(comprimento)<=0)){ alert('Para Lâmina/Metro linear, informe a metragem.'); return; }
-    if(tipo==='m2'){ if(!largura||Number(largura)<=0){ alert('Para m², informe a largura.'); return; } if(!comprimento||Number(comprimento)<=0){ alert('Para m², informe o comprimento.'); return; } }
-    if(tipo==='m3'){ if(!espessura||Number(espessura)<=0){ alert('Para m³, informe a espessura.'); return; } if(!largura||Number(largura)<=0){ alert('Para m³, informe a largura.'); return; } if(!comprimento||Number(comprimento)<=0){ alert('Para m³, informe o comprimento.'); return; } }
-
-    const item = { produto, comprimento: comprimento ? Number(comprimento) : '', largura: largura ? Number(largura) : '', espessura: espessura ? Number(espessura) : '', qtd, tipo, valor };
-    item.total = calcularTotalItem(item);
-    itens.push(item);
-    document.getElementById('itemProduto').value='';
-    document.getElementById('itemComprimento').value='';
-    document.getElementById('itemLargura').value='';
-    document.getElementById('itemEspessura').value='';
-    document.getElementById('itemQtd').value=1;
-    document.getElementById('itemValor').value='';
-    document.getElementById('itemTipo').value='peca';
-    onTipoItemChange();
-    renderizarItens();
+    const produto=document.getElementById('itemProduto').value.trim();
+    const comprimento=document.getElementById('itemComprimento').value;
+    const largura=document.getElementById('itemLargura').value;
+    const espessura=document.getElementById('itemEspessura').value;
+    const qtd=Number(document.getElementById('itemQtd').value);
+    const tipo=document.getElementById('itemTipo').value;
+    const valor=Number(document.getElementById('itemValor').value);
+    if(!produto){alert('Informe o produto.');return;}
+    if(!qtd||qtd<=0){alert('Informe a quantidade.');return;}
+    if(isNaN(valor)||valor<0){alert('Informe o valor unitário.');return;}
+    if((tipo==='lamina'||tipo==='ml')&&(!comprimento||Number(comprimento)<=0)){alert('Informe a metragem.');return;}
+    if(tipo==='m2'){if(!largura||Number(largura)<=0){alert('Informe a largura.');return;} if(!comprimento||Number(comprimento)<=0){alert('Informe o comprimento.');return;}}
+    if(tipo==='m3'){if(!espessura||Number(espessura)<=0){alert('Informe a espessura.');return;} if(!largura||Number(largura)<=0){alert('Informe a largura.');return;} if(!comprimento||Number(comprimento)<=0){alert('Informe o comprimento.');return;}}
+    const item={produto,comprimento:comprimento?Number(comprimento):'',largura:largura?Number(largura):'',espessura:espessura?Number(espessura):'',qtd,tipo,valor};
+    item.total=calcularTotalItem(item); itens.push(item);
+    ['itemProduto','itemComprimento','itemLargura','itemEspessura','itemValor'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('itemQtd').value=1; document.getElementById('itemTipo').value='peca'; onTipoItemChange(); renderizarItens();
   }
-
   function removerItem(idx){ itens.splice(idx,1); renderizarItens(); }
-
   function calcularSubtotal(){ return itens.reduce((s,i)=>s+i.total,0); }
-  function calcularTotal(){ const subtotal=calcularSubtotal(); const pct=Number(document.getElementById('pedidoDesconto').value||0); return Math.max(0, subtotal - subtotal*(pct/100)); }
-  function calcularDescontoReais(){ const subtotal=calcularSubtotal(); const pct=Number(document.getElementById('pedidoDesconto').value||0); return subtotal*(pct/100); }
+  function calcularTotal(){ const sub=calcularSubtotal(); const pct=Number(document.getElementById('pedidoDesconto').value||0); return Math.max(0,sub-sub*(pct/100)); }
+  function calcularDescontoReais(){ const sub=calcularSubtotal(); const pct=Number(document.getElementById('pedidoDesconto').value||0); return sub*(pct/100); }
 
   function renderizarItens(){
-    const tbody = document.getElementById('tabelaItens');
-    tbody.innerHTML = '';
+    const tbody=document.getElementById('tabelaItens'); tbody.innerHTML='';
     itens.forEach((item,idx)=>{
-      const tr = document.createElement('tr');
-      let dimParts = [];
-      if(item.espessura) dimParts.push(`esp:${item.espessura}m`);
-      if(item.largura)   dimParts.push(`larg:${item.largura}m`);
-      if(item.comprimento) dimParts.push(`comp:${item.comprimento}m`);
-      const dimDisplay = dimParts.length ? dimParts.join(' × ') : '—';
-      let valorLabel = formatarBRL(item.valor);
-      if(item.tipo==='lamina'||item.tipo==='ml') valorLabel += '/m';
-      else if(item.tipo==='m2') valorLabel += '/m²';
-      else if(item.tipo==='m3') valorLabel += '/m³';
-      tr.innerHTML = `<td class="center">${idx+1}</td><td><strong>${item.qtd.toLocaleString('pt-BR',{maximumFractionDigits:3})}</strong></td><td>${item.produto}</td><td style="font-size:11px;color:var(--muted)">${dimDisplay}</td><td><span class="tag">${tipoLabel(item.tipo)}</span></td><td>${valorLabel}</td><td><strong>${formatarBRL(item.total)}</strong></td><td class="right"><button class="danger" style="padding:5px 10px" onclick="removerItem(${idx})">&#x2715;</button></td>`;
+      const dp=[]; if(item.espessura)dp.push('esp:'+item.espessura+'m'); if(item.largura)dp.push('larg:'+item.largura+'m'); if(item.comprimento)dp.push('comp:'+item.comprimento+'m');
+      const dim=dp.length?dp.join(' × '):'—'; let vl=formatarBRL(item.valor);
+      if(item.tipo==='lamina'||item.tipo==='ml')vl+='/m'; else if(item.tipo==='m2')vl+='/m²'; else if(item.tipo==='m3')vl+='/m³';
+      const tr=document.createElement('tr');
+      tr.innerHTML=`<td class="center">${idx+1}</td><td><strong>${item.qtd.toLocaleString('pt-BR',{maximumFractionDigits:3})}</strong></td><td>${item.produto}</td><td style="font-size:11px;color:var(--muted)">${dim}</td><td><span class="tag">${tipoLabel(item.tipo)}</span></td><td>${vl}</td><td><strong>${formatarBRL(item.total)}</strong></td><td class="right"><button class="danger" style="padding:5px 10px" onclick="removerItem(${idx})">✕</button></td>`;
       tbody.appendChild(tr);
     });
-    document.getElementById('pedidoTotal').value = formatarBRL(calcularTotal());
-    document.getElementById('pedidoDescontoReais').value = formatarBRL(calcularDescontoReais());
+    document.getElementById('pedidoTotal').value=formatarBRL(calcularTotal());
+    document.getElementById('pedidoDescontoReais').value=formatarBRL(calcularDescontoReais());
   }
 
-  function formaGeraEntradaImediata(forma){ return forma === 'Dinheiro' || forma === 'Cheque'; }
+  function formaGeraEntradaImediata(f){ return f==='Dinheiro'||f==='Cheque'; }
   function onTipoDocumentoChange(){ renderizarItens(); }
-  function getTipoDocumento(){ return document.querySelector('input[name="tipoDocumento"]:checked')?.value || 'Pedido'; }
+  function getTipoDocumento(){ return document.querySelector('input[name="tipoDocumento"]:checked')?.value||'Pedido'; }
   function numeroPedido(){ const pedidos=obterPedidos(); const max=pedidos.reduce((m,p)=>Math.max(m,Number(p.numero)||0),0); return String(max+1).padStart(4,'0'); }
 
   function onFormaPagamentoChange(){
-    const forma = document.getElementById('formaPagamento').value;
-    document.getElementById('blocoPix').style.display = forma==='Pix' ? 'block' : 'none';
-    document.getElementById('avisosCheque').style.display = forma==='Cheque' ? 'block' : 'none';
-    if(forma==='Pix') preencherPixComConfig();
+    const forma=document.getElementById('formaPagamento').value;
+    document.getElementById('blocoPix').style.display=forma==='Pix'?'block':'none';
+    document.getElementById('avisosCheque').style.display=forma==='Cheque'?'block':'none';
+    const parc=forma==='Boleto'||forma==='Prazo / Fiado';
+    document.getElementById('blocoParcelamento').style.display=parc?'block':'none';
+    if(parc)parcGerarLinhas();
+    if(forma==='Pix')preencherPixComConfig();
   }
-
-  function preencherPixComConfig(){
-    const cfg = obterConfig();
-    if(cfg.pixChave) document.getElementById('vendaPixChave').value = cfg.pixChave;
-    if(cfg.pixRecebedor) document.getElementById('vendaPixRecebedor').value = cfg.pixRecebedor;
-    if(cfg.pixCidade) document.getElementById('vendaPixCidade').value = cfg.pixCidade;
-  }
+  function preencherPixComConfig(){ const cfg=obterConfig(); if(cfg.pixChave)document.getElementById('vendaPixChave').value=cfg.pixChave; if(cfg.pixRecebedor)document.getElementById('vendaPixRecebedor').value=cfg.pixRecebedor; if(cfg.pixCidade)document.getElementById('vendaPixCidade').value=cfg.pixCidade; }
 
   function novoPedido(){
     pedidoEditando=null; itens=[];
     document.getElementById('pedidoNumero').value=numeroPedido();
     document.getElementById('pedidoData').value=hojeISO();
-    document.getElementById('pedidoVendedor').value='';
-    document.getElementById('clienteNome').value='';
-    document.getElementById('clienteTelefone').value='';
-    document.getElementById('clienteDoc').value='';
-    document.getElementById('clienteEndereco').value='';
-    document.getElementById('clienteCidade').value='';
-    document.getElementById('clienteEmail').value='';
-    document.getElementById('clienteComplemento').value='';
+    ['pedidoVendedor','clienteNome','clienteTelefone','clienteDoc','clienteEndereco','clienteCidade','clienteEmail','clienteComplemento','pedidoObs','vendaPixChave','vendaPixRecebedor','vendaPixCidade'].forEach(id=>document.getElementById(id).value='');
     document.getElementById('formaPagamento').value='Dinheiro';
     document.getElementById('pedidoDesconto').value=0;
     document.getElementById('pedidoDescontoReais').value='';
-    document.getElementById('pedidoObs').value='';
     document.getElementById('blocoPix').style.display='none';
     document.getElementById('avisosCheque').style.display='none';
+    document.getElementById('blocoParcelamento').style.display='none';
     document.getElementById('qrDoPedidoWrapper').style.display='none';
-    document.getElementById('vendaPixChave').value='';
-    document.getElementById('vendaPixRecebedor').value='';
-    document.getElementById('vendaPixCidade').value='';
     document.getElementById('payloadDoPedido').textContent='';
     document.getElementById('itemTipo').value='peca';
-    onTipoItemChange();
-    renderizarItens();
+    document.getElementById('parcEntrada').value='0';
+    document.getElementById('parcQtd').value='1';
+    document.getElementById('parcPrimeiroVenc').value='';
+    document.getElementById('parcLinhas').innerHTML='';
+    document.getElementById('parcResumo').style.display='none';
+    onTipoItemChange(); renderizarItens();
     document.getElementById('btnExcluir').style.display='none';
     document.querySelector('input[name="tipoDocumento"][value="Pedido"]').checked=true;
   }
 
   function salvarPedido(){
-    const cliente = document.getElementById('clienteNome').value.trim();
-    if(!cliente){ alert('Informe o nome do cliente.'); return; }
-    if(itens.length===0){ alert('Adicione ao menos um item.'); return; }
-    const tipoDoc = getTipoDocumento();
-    const formaPagamento = document.getElementById('formaPagamento').value;
-    const descontoPct = Number(document.getElementById('pedidoDesconto').value||0);
-    const descontoReais = calcularDescontoReais();
-    const pedido = {
-      id: pedidoEditando||Date.now(),
-      numero: document.getElementById('pedidoNumero').value,
-      data: document.getElementById('pedidoData').value,
-      vendedor: document.getElementById('pedidoVendedor').value.trim(),
-      cliente, telefone: document.getElementById('clienteTelefone').value.trim(),
-      doc: document.getElementById('clienteDoc').value.trim(),
-      endereco: document.getElementById('clienteEndereco').value.trim(),
-      cidade: document.getElementById('clienteCidade').value.trim(),
-      email: document.getElementById('clienteEmail').value.trim(),
-      complemento: document.getElementById('clienteComplemento').value.trim(),
-      obs: document.getElementById('pedidoObs').value.trim(),
-      tipoDocumento: tipoDoc, formaPagamento,
-      descontoPct, descontoReais, desconto: descontoReais,
-      total: calcularTotal(), itens: [...itens],
-      pixChave: document.getElementById('vendaPixChave').value.trim(),
-      pixRecebedor: document.getElementById('vendaPixRecebedor').value.trim(),
-      pixCidade: document.getElementById('vendaPixCidade').value.trim(),
-      pixPayload: document.getElementById('payloadDoPedido').textContent.trim(),
-      criadoEm: new Date().toISOString()
+    const cliente=document.getElementById('clienteNome').value.trim();
+    if(!cliente){alert('Informe o nome do cliente.');return;}
+    if(itens.length===0){alert('Adicione ao menos um item.');return;}
+    const tipoDoc=getTipoDocumento();
+    const formaPagamento=document.getElementById('formaPagamento').value;
+    const descontoPct=Number(document.getElementById('pedidoDesconto').value||0);
+    const descontoReais=calcularDescontoReais();
+    const totalNota=calcularTotal();
+    const precisaParcelar=tipoDoc==='Pedido'&&(formaPagamento==='Boleto'||formaPagamento==='Prazo / Fiado');
+    let parcelas=[]; let entradaParc=0;
+    if(precisaParcelar){
+      entradaParc=Number(document.getElementById('parcEntrada').value||0);
+      const linhas=document.querySelectorAll('.parc-linha-item');
+      for(let i=0;i<linhas.length;i++){
+        const venc=linhas[i].querySelector('.parc-venc').value;
+        const val=Number(linhas[i].querySelector('.parc-val').value||0);
+        const obs=linhas[i].querySelector('.parc-obs').value||'';
+        if(!venc){alert(`Informe a data de vencimento da ${i+1}ª parcela.`);return;}
+        if(val<=0){alert(`Informe o valor da ${i+1}ª parcela.`);return;}
+        parcelas.push({vencimento:venc,valor:val,obs,pago:false});
+      }
+      const totalParc=parcelas.reduce((s,p)=>s+p.valor,0);
+      const saldoEsperado=totalNota-entradaParc;
+      if(Math.abs(totalParc-saldoEsperado)>0.05){alert(`A soma das parcelas (${formatarBRL(totalParc)}) não bate com o saldo (${formatarBRL(saldoEsperado)}).`);return;}
+    }
+    const pedido={
+      id:pedidoEditando||Date.now(),
+      numero:document.getElementById('pedidoNumero').value,
+      data:document.getElementById('pedidoData').value,
+      vendedor:document.getElementById('pedidoVendedor').value.trim(),
+      cliente,telefone:document.getElementById('clienteTelefone').value.trim(),
+      doc:document.getElementById('clienteDoc').value.trim(),
+      endereco:document.getElementById('clienteEndereco').value.trim(),
+      cidade:document.getElementById('clienteCidade').value.trim(),
+      email:document.getElementById('clienteEmail').value.trim(),
+      complemento:document.getElementById('clienteComplemento').value.trim(),
+      obs:document.getElementById('pedidoObs').value.trim(),
+      tipoDocumento:tipoDoc,formaPagamento,descontoPct,descontoReais,desconto:descontoReais,total:totalNota,itens:[...itens],
+      pixChave:document.getElementById('vendaPixChave').value.trim(),
+      pixRecebedor:document.getElementById('vendaPixRecebedor').value.trim(),
+      pixCidade:document.getElementById('vendaPixCidade').value.trim(),
+      pixPayload:document.getElementById('payloadDoPedido').textContent.trim(),
+      criadoEm:new Date().toISOString()
     };
-    let pedidos = obterPedidos();
-    const idx = pedidos.findIndex(p=>p.id===pedido.id);
-    if(idx>=0) pedidos[idx]=pedido; else pedidos.unshift(pedido);
-    if(idx<0 && tipoDoc==='Pedido' && formaGeraEntradaImediata(formaPagamento)){
-      const caixa = obterCaixa();
-      const descCaixa = formaPagamento==='Cheque' ? `Cheque — Pedido ${pedido.numero} - ${pedido.cliente}` : `Pedido ${pedido.numero} - ${pedido.cliente}`;
-      caixa.unshift({ id:'ENT-'+pedido.id, data:pedido.data, tipo:'entrada', descricao:descCaixa, valor:pedido.total, formaPagamento });
+    let pedidos=obterPedidos();
+    const idx=pedidos.findIndex(p=>p.id===pedido.id);
+    if(idx>=0)pedidos[idx]=pedido; else pedidos.unshift(pedido);
+    if(idx<0&&tipoDoc==='Pedido'&&formaGeraEntradaImediata(formaPagamento)){
+      const caixa=obterCaixa();
+      const desc=formaPagamento==='Cheque'?`Cheque — Pedido ${pedido.numero} - ${pedido.cliente}`:`Pedido ${pedido.numero} - ${pedido.cliente}`;
+      caixa.unshift({id:'ENT-'+pedido.id,data:pedido.data,tipo:'entrada',descricao:desc,valor:pedido.total,formaPagamento});
       salvarCaixa(caixa);
     }
-    if(idx<0 && tipoDoc==='Pedido' && formaPagamento==='Pix' && pedido.pixPayload){
-      const cobrancas = obterCobrancas();
-      cobrancas.unshift({ id:'COB-'+pedido.id, pedidoNumero:pedido.numero, data:pedido.data, cliente:pedido.cliente, telefone:pedido.telefone, valor:pedido.total, chave:pedido.pixChave, recebedor:pedido.pixRecebedor, cidade:pedido.pixCidade, txid:'PED'+pedido.numero, obs:pedido.obs, payload:pedido.pixPayload, pago:false, salvoEm:new Date().toISOString() });
+    if(idx<0&&tipoDoc==='Pedido'&&formaPagamento==='Pix'&&pedido.pixPayload){
+      const cobrancas=obterCobrancas();
+      cobrancas.unshift({id:'COB-'+pedido.id,pedidoNumero:pedido.numero,data:pedido.data,cliente:pedido.cliente,telefone:pedido.telefone,valor:pedido.total,chave:pedido.pixChave,recebedor:pedido.pixRecebedor,cidade:pedido.pixCidade,txid:'PED'+pedido.numero,obs:pedido.obs,payload:pedido.pixPayload,pago:false,salvoEm:new Date().toISOString()});
       salvarCobrancas(cobrancas);
     }
+    if(idx<0&&precisaParcelar){
+      const caixa=obterCaixa();
+      const pagamentos=[];
+      if(entradaParc>0){
+        pagamentos.push({id:'ENT-'+Date.now(),data:pedido.data,valor:entradaParc,forma:'Dinheiro',obs:'Entrada ao fechar pedido',ehEntrada:true});
+        caixa.unshift({id:'CRENT-'+pedido.id,data:pedido.data,tipo:'entrada',descricao:`Entrada ${formaPagamento} — Ped.${pedido.numero} ${pedido.cliente}`,valor:entradaParc,formaPagamento:'Dinheiro'});
+      }
+      const cr=obterContasReceber();
+      cr.unshift({id:'CR-'+pedido.id,cliente:pedido.cliente,pedido:pedido.numero,dataNota:pedido.data,valorTotal:totalNota,entrada:entradaParc,formaPagamento,obs:pedido.obs||'',parcelas,pagamentos,criadoEm:new Date().toISOString()});
+      salvarContasReceber(cr); salvarCaixa(caixa);
+    }
     salvarPedidos(pedidos); renderizarPedidos(); renderizarCaixa();
-    alert('Salvo com sucesso!'); novoPedido();
+    alert('Salvo com sucesso!'+(precisaParcelar?'\n\nConta criada em Contas a Receber ✅':''));
+    novoPedido();
   }
 
   function carregarPedido(id){
-    const p = obterPedidos().find(x=>x.id===id);
-    if(!p) return;
+    const p=obterPedidos().find(x=>x.id===id); if(!p)return;
     pedidoEditando=p.id; itens=[...p.itens];
     document.getElementById('pedidoNumero').value=p.numero;
     document.getElementById('pedidoData').value=p.data;
@@ -842,48 +953,416 @@
     document.getElementById('clienteComplemento').value=p.complemento||'';
     document.getElementById('pedidoObs').value=p.obs||'';
     document.getElementById('formaPagamento').value=p.formaPagamento||'Dinheiro';
-    document.getElementById('pedidoDesconto').value = p.descontoPct !== undefined ? p.descontoPct : 0;
-    const tipoRadio = p.tipoDocumento==='Orçamento' ? document.querySelector('input[name="tipoDocumento"][value="Orçamento"]') : document.querySelector('input[name="tipoDocumento"][value="Pedido"]');
-    if(tipoRadio) tipoRadio.checked=true;
-    onFormaPagamentoChange();
-    renderizarItens();
+    document.getElementById('pedidoDesconto').value=p.descontoPct!==undefined?p.descontoPct:0;
+    const radio=p.tipoDocumento==='Orçamento'?document.querySelector('input[name="tipoDocumento"][value="Orçamento"]'):document.querySelector('input[name="tipoDocumento"][value="Pedido"]');
+    if(radio)radio.checked=true;
+    onFormaPagamentoChange(); renderizarItens();
     document.getElementById('btnExcluir').style.display='inline-block';
     window.scrollTo({top:0,behavior:'smooth'});
   }
 
   function excluirPedidoAtual(){
-    if(!pedidoEditando){ alert('Nenhum pedido selecionado para excluir.'); return; }
-    if(confirm('Tem certeza que deseja excluir este documento permanentemente?')){
-      let pedidos = obterPedidos();
-      pedidos = pedidos.filter(p=>p.id!==pedidoEditando);
+    if(!pedidoEditando){alert('Nenhum pedido selecionado.');return;}
+    if(confirm('Excluir este documento permanentemente?')){
+      let pedidos=obterPedidos().filter(p=>p.id!==pedidoEditando);
       salvarPedidos(pedidos); renderizarPedidos(); novoPedido(); alert('Documento excluído.');
     }
   }
 
   function renderizarPedidos(){
-    const busca = document.getElementById('buscaPedido').value.trim().toLowerCase();
-    const lista = obterPedidos().filter(p=>!busca||p.cliente.toLowerCase().includes(busca)||String(p.numero).includes(busca));
-    const el = document.getElementById('listaPedidos');
-    if(lista.length===0){ el.innerHTML='<div class="item"><span>Nenhum documento encontrado.</span></div>'; return; }
-    el.innerHTML = lista.map(p=>`<div class="item" onclick="carregarPedido(${p.id})"><strong>${p.tipoDocumento==='Orçamento'?'&#x1F4C4;':'&#x2705;'} ${p.tipoDocumento} ${p.numero} — ${p.cliente}</strong><span>${formatarData(p.data)} • ${p.formaPagamento} • ${formatarBRL(p.total)}</span><br><span>${p.itens.length} item(ns)${p.descontoPct>0?' • Desc: '+Number(p.descontoPct).toFixed(2)+'%':''}</span></div>`).join('');
+    const busca=document.getElementById('buscaPedido').value.trim().toLowerCase();
+    const lista=obterPedidos().filter(p=>!busca||p.cliente.toLowerCase().includes(busca)||String(p.numero).includes(busca));
+    const el=document.getElementById('listaPedidos');
+    if(!lista.length){el.innerHTML='<div class="item"><span>Nenhum documento encontrado.</span></div>';return;}
+    el.innerHTML=lista.map(p=>`<div class="item" onclick="carregarPedido(${p.id})"><strong>${p.tipoDocumento==='Orçamento'?'📄':'✅'} ${p.tipoDocumento} ${p.numero} — ${p.cliente}</strong><span>${formatarData(p.data)} • ${p.formaPagamento} • ${formatarBRL(p.total)}</span><br><span>${p.itens.length} item(ns)${p.descontoPct>0?' • Desc: '+Number(p.descontoPct).toFixed(2)+'%':''}</span></div>`).join('');
   }
 
   function renderizarCaixa(){
-    const hoje = hojeISO();
-    const c = obterCaixa().filter(x=>x.data===hoje);
-    const e = c.filter(x=>x.tipo==='entrada').reduce((s,x)=>s+Number(x.valor),0);
-    const s = c.filter(x=>x.tipo==='saida').reduce((s,x)=>s+Number(x.valor),0);
+    const hoje=hojeISO();
+    const c=obterCaixa().filter(x=>x.data===hoje);
+    const e=c.filter(x=>x.tipo==='entrada').reduce((s,x)=>s+Number(x.valor),0);
+    const s=c.filter(x=>x.tipo==='saida').reduce((s,x)=>s+Number(x.valor),0);
     document.getElementById('caixaEntradas').textContent=formatarBRL(e);
     document.getElementById('caixaSaidas').textContent=formatarBRL(s);
     document.getElementById('caixaSaldo').textContent=formatarBRL(e-s);
   }
 
-  function montarHTMLVia(cfg, tipoDoc, numero, data, vendedor, cliente, telefone, doc, endereco, cidade, email, complemento, obs, forma, descontoPct, descontoReais, subtotal, total, itensList, viaLabel){
-    return `<div style="font-family:Arial,sans-serif"><div style="border:2px solid #1a5276;border-radius:4px;overflow:hidden;margin-bottom:6px"><div style="display:flex;justify-content:space-between;align-items:stretch;border-bottom:1px solid #1a5276"><div style="padding:6px 12px;flex:1;border-right:1px solid #1a5276">${cfg.empresa?`<div style="font-size:15px;font-weight:700;color:#1a5276">${cfg.empresa}</div>`:''} ${cfg.cnpj?`<div style="font-size:10px;color:#6b7280">CNPJ: ${cfg.cnpj}</div>`:''} ${cfg.telefone?`<div style="font-size:10px;color:#6b7280">Tel: ${cfg.telefone}</div>`:''} ${cfg.endereco?`<div style="font-size:10px;color:#6b7280">${cfg.endereco}</div>`:''}</div><div style="padding:6px 14px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:160px"><div style="font-size:11px;font-weight:700;color:#1a5276;margin-bottom:2px">${tipoDoc.toUpperCase()} — ${viaLabel}</div><div style="font-size:22px;font-weight:700;color:#c0392b;letter-spacing:2px">${numero.padStart(7,'0')}</div></div></div><div style="display:grid;grid-template-columns:1fr auto;border-bottom:1px solid #1a5276"><div style="padding:5px 12px;border-right:1px solid #1a5276"><span style="font-size:11px;color:#6b7280;font-weight:700">Data </span><span style="font-size:12px">${formatarData(data)}</span></div><div style="padding:5px 12px;min-width:200px"><span style="font-size:11px;color:#6b7280;font-weight:700">Fone: </span><span style="font-size:12px">${telefone||'_________________'}</span></div></div><div style="padding:5px 12px;border-bottom:1px solid #1a5276"><span style="font-size:11px;color:#6b7280;font-weight:700">Sr(a). </span><span style="font-size:13px;font-weight:700">${cliente}</span>${doc?`<span style="font-size:11px;color:#6b7280;margin-left:14px">CPF/CNPJ: ${doc}</span>`:''}</div><div style="padding:5px 12px;border-bottom:1px solid #1a5276"><span style="font-size:11px;color:#6b7280;font-weight:700">End. </span><span style="font-size:12px">${endereco||''}${complemento?', '+complemento:''}</span></div>${(cidade||email||vendedor)?`<div style="padding:5px 12px;display:flex;gap:16px;border-bottom:1px solid #1a5276">${cidade?`<span><span style="font-size:11px;color:#6b7280;font-weight:700">Cidade: </span><span style="font-size:12px">${cidade}</span></span>`:''} ${email?`<span><span style="font-size:11px;color:#6b7280;font-weight:700">E-mail: </span><span style="font-size:12px">${email}</span></span>`:''} ${vendedor?`<span><span style="font-size:11px;color:#6b7280;font-weight:700">Vendedor: </span><span style="font-size:12px">${vendedor}</span></span>`:''}</div>`:''}</div><table style="width:100%;border-collapse:collapse;margin-bottom:6px;font-size:11px" border="1" cellpadding="5"><thead style="background:#1a5276;color:white"><tr><th style="text-align:center">QTDE</th><th style="text-align:left">DESCRIÇÃO</th><th style="text-align:center">DIMENSÕES</th><th style="text-align:center">TIPO</th><th style="text-align:center">VLR/UNID.</th><th style="text-align:right">TOTAL R$</th></tr></thead><tbody>${itensList.map((i,idx)=>{ let dp=[];if(i.espessura)dp.push('esp:'+i.espessura+'m');if(i.largura)dp.push('larg:'+i.largura+'m');if(i.comprimento)dp.push('comp:'+i.comprimento+'m');const dim=dp.join(' × ')||'';let vl=formatarBRL(i.valor);if(i.tipo==='lamina'||i.tipo==='ml')vl+='/m';else if(i.tipo==='m2')vl+='/m²';else if(i.tipo==='m3')vl+='/m³';return `<tr style="${idx%2===0?'':'background:#f5f8ff'}"><td style="text-align:center;font-weight:700">${i.qtd.toLocaleString('pt-BR',{maximumFractionDigits:3})}</td><td style="font-size:11px">${i.produto}</td><td style="text-align:center;font-size:10px">${dim}</td><td style="text-align:center;font-size:10px">${tipoLabel(i.tipo)}</td><td style="text-align:center">${vl}</td><td style="text-align:right;font-weight:700">${formatarBRL(i.total)}</td></tr>`; }).join('')}${Array(Math.max(0,4-itensList.length)).fill('<tr><td style="height:18px">&nbsp;</td><td></td><td></td><td></td><td></td><td></td></tr>').join('')}</tbody></table><div style="display:flex;justify-content:flex-end;margin-bottom:6px"><table style="font-size:11px;min-width:240px;border:1px solid #1a5276"><tr><td style="padding:4px 10px;border-bottom:1px solid #dbe3ee;color:#6b7280">Subtotal</td><td style="padding:4px 10px;border-bottom:1px solid #dbe3ee;text-align:right">${formatarBRL(subtotal)}</td></tr>${descontoPct>0?`<tr><td style="padding:4px 10px;border-bottom:1px solid #dbe3ee;color:#dc2626">Desconto (${Number(descontoPct).toFixed(2)}%)</td><td style="padding:4px 10px;border-bottom:1px solid #dbe3ee;text-align:right;color:#dc2626">- ${formatarBRL(descontoReais)}</td></tr>`:''}<tr style="background:#1a5276;color:white"><td style="padding:6px 10px;font-size:14px;font-weight:700">TOTAL R$</td><td style="padding:6px 10px;text-align:right;font-size:16px;font-weight:700">${formatarBRL(total)}</td></tr><tr><td style="padding:4px 10px;color:#6b7280">Pagamento</td><td style="padding:4px 10px;text-align:right;font-weight:700">${forma}</td></tr></table></div>${obs?`<div style="border:1px solid #dbe3ee;border-radius:4px;padding:6px 10px;margin-bottom:6px;background:#fffbeb;font-size:11px"><strong>OBS.:</strong> ${obs}</div>`:''}<div style="display:flex;justify-content:space-between;padding-top:8px;border-top:1.5px solid #1a5276"><div style="text-align:center;flex:1"><div style="border-top:1px solid #333;padding-top:3px;margin-top:28px;font-size:10px">Vendedor</div></div><div style="text-align:center;flex:1"><div style="border-top:1px solid #333;padding-top:3px;margin-top:28px;font-size:10px">Cliente</div></div></div>${cfg.rodape?`<div style="text-align:center;font-size:9px;color:#9ca3af;margin-top:6px;border-top:1px solid #dbe3ee;padding-top:4px">${cfg.rodape}</div>`:''}</div>`;
+  /* ── Pix helpers ── */
+  function onlyAscii(t){ return (t||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Za-z0-9 $%*+\-./:]/g,'').toUpperCase(); }
+  function emv(id,v){ const l=String(v.length).padStart(2,'0'); return id+l+v; }
+  function crc16(str){ let c=0xFFFF; for(let i=0;i<str.length;i++){ c^=str.charCodeAt(i)<<8; for(let j=0;j<8;j++) c=(c&0x8000)?((c<<1)^0x1021):(c<<1),c&=0xFFFF; } return c.toString(16).toUpperCase().padStart(4,'0'); }
+  function gerarPayloadPix(key,name,city,value,txid){ const gui=emv('00','BR.GOV.BCB.PIX'); const chave=emv('01',key); const ma=emv('26',gui+chave); const pf=emv('00','01'); const mc=emv('52','0000'); const tc=emv('53','986'); const am=value>0?emv('54',Number(value).toFixed(2)):''; const cc=emv('58','BR'); const mn=emv('59',onlyAscii(name).slice(0,25)||'RECEBEDOR'); const mci=emv('60',onlyAscii(city).slice(0,15)||'CIDADE'); const ad=emv('62',emv('05',(txid||'***').slice(0,25))); const sem=pf+ma+mc+tc+am+cc+mn+mci+ad+'6304'; return sem+crc16(sem); }
+  function qrUrl(payload){ return 'https://api.qrserver.com/v1/create-qr-code/?size=320x320&data='+encodeURIComponent(payload); }
+
+  function gerarPixDoPedido(){ const key=document.getElementById('vendaPixChave').value.trim(); const name=document.getElementById('vendaPixRecebedor').value.trim(); const city=document.getElementById('vendaPixCidade').value.trim(); const value=calcularTotal(); const numero=document.getElementById('pedidoNumero').value; if(!key){alert('Informe a chave Pix.');return;} if(value<=0){alert('O total deve ser maior que zero.');return;} const payload=gerarPayloadPix(key,name||'RECEBEDOR',city||'CIDADE',value,'PED'+numero); document.getElementById('payloadDoPedido').textContent=payload; document.getElementById('qrDoPedido').src=qrUrl(payload); document.getElementById('qrDoPedidoWrapper').style.display='block'; }
+  function copiarPixPedido(){ const text=document.getElementById('payloadDoPedido').textContent; if(text)navigator.clipboard.writeText(text).then(()=>alert('Código Pix copiado!')); }
+  function gerarPixFinanceiro(){ const key=document.getElementById('finChave').value.trim(); const name=document.getElementById('finRecebedor').value.trim(); const city=document.getElementById('finCidade').value.trim(); const value=Number(document.getElementById('finValor').value||0); const pedidoNumero=document.getElementById('finPedidoNumero').value.trim(); const txid=(document.getElementById('finTxid').value.trim()||('PED'+(pedidoNumero||Date.now()))).slice(0,25); if(!document.getElementById('finCliente').value.trim()){alert('Informe o cliente.');return;} if(!key){alert('Informe a chave Pix.');return;} if(!value||value<=0){alert('Informe um valor válido.');return;} const payload=gerarPayloadPix(key,name,city,value,txid); document.getElementById('payloadFinanceiro').textContent=payload; document.getElementById('qrFinanceiro').src=qrUrl(payload); document.getElementById('finTxid').value=txid; }
+  function limparFinanceiro(){ ['finPedidoNumero','finCliente','finTelefone','finValor','finChave','finRecebedor','finCidade','finTxid','finObs'].forEach(id=>document.getElementById(id).value=''); document.getElementById('finData').value=hojeISO(); document.getElementById('payloadFinanceiro').textContent='O código Pix aparecerá aqui.'; document.getElementById('qrFinanceiro').removeAttribute('src'); preencherPixComConfig(); }
+  function salvarCobranca(){ const payload=document.getElementById('payloadFinanceiro').textContent; if(!payload||payload==='O código Pix aparecerá aqui.'){alert('Gere o QR Code antes de salvar.');return;} const c={id:'COB-'+Date.now(),pedidoNumero:document.getElementById('finPedidoNumero').value.trim()||'-',data:document.getElementById('finData').value||hojeISO(),cliente:document.getElementById('finCliente').value.trim(),telefone:document.getElementById('finTelefone').value.trim(),valor:Number(document.getElementById('finValor').value||0),chave:document.getElementById('finChave').value.trim(),recebedor:document.getElementById('finRecebedor').value.trim(),cidade:document.getElementById('finCidade').value.trim(),txid:document.getElementById('finTxid').value.trim(),obs:document.getElementById('finObs').value.trim(),payload,pago:false,salvoEm:new Date().toISOString()}; let lista=obterCobrancas(); lista.unshift(c); salvarCobrancas(lista); renderizarCobrancas(); alert('Cobrança Pix salva.'); }
+  function renderizarCobrancas(){ const busca=document.getElementById('buscaCobranca').value.trim().toLowerCase(); const lista=obterCobrancas().filter(x=>!busca||(x.cliente||'').toLowerCase().includes(busca)||(x.pedidoNumero||'').toLowerCase().includes(busca)); const el=document.getElementById('listaCobrancas'); if(!lista.length){el.innerHTML='<div class="item"><span>Nenhuma cobrança Pix salva.</span></div>';document.getElementById('detalheVazio').style.display='block';document.getElementById('detalheCobranca').style.display='none';return;} el.innerHTML=lista.map(x=>`<div class="item" onclick="selecionarCobranca('${x.id}')"><strong>Pedido ${x.pedidoNumero} — ${x.cliente}</strong><span>${formatarData(x.data)} • ${formatarBRL(x.valor)}</span><br><span class="status ${x.pago?'badge-paid':'badge-pending'}">${x.pago?'✅ Pago':'⏳ Pendente'}</span></div>`).join(''); if(lista.length)selecionarCobranca(lista[0].id); }
+  function selecionarCobranca(id){ const item=obterCobrancas().find(x=>x.id===id); if(!item)return; cobrancaSelecionadaId=id; document.getElementById('detalheVazio').style.display='none'; document.getElementById('detalheCobranca').style.display='block'; document.getElementById('detCliente').textContent=item.cliente; document.getElementById('detResumo').textContent=`${formatarData(item.data)} • ${item.telefone||''}`; document.getElementById('detPedido').textContent=item.pedidoNumero; document.getElementById('detValor').textContent=formatarBRL(item.valor); document.getElementById('detTxid').textContent=item.txid||'-'; document.getElementById('detRecebedor').textContent=item.recebedor||'-'; document.getElementById('detChave').textContent=item.chave||'-'; document.getElementById('payloadVendas').textContent=item.payload||''; document.getElementById('qrVendas').src=qrUrl(item.payload||''); const st=document.getElementById('detStatus'); st.textContent=item.pago?'✅ Pago':'⏳ Pendente'; st.className='status '+(item.pago?'badge-paid':'badge-pending'); }
+  function marcarCobrancaComoPaga(){ if(!cobrancaSelecionadaId)return; let lista=obterCobrancas(); const idx=lista.findIndex(x=>x.id===cobrancaSelecionadaId); if(idx<0||lista[idx].pago)return; lista[idx].pago=true; salvarCobrancas(lista); const caixa=obterCaixa(); caixa.unshift({id:'PIX-'+Date.now(),data:hojeISO(),tipo:'pix',descricao:`Pix Pedido ${lista[idx].pedidoNumero} - ${lista[idx].cliente}`,valor:lista[idx].valor,formaPagamento:'Pix'}); salvarCaixa(caixa); renderizarCobrancas(); selecionarCobranca(cobrancaSelecionadaId); renderizarCaixa(); renderizarCaixaCompleto(); alert('Pago e lançado no caixa (Pix).'); }
+  function copiarPix(elId){ const text=document.getElementById(elId).textContent; if(text&&text!=='O código Pix aparecerá aqui.')navigator.clipboard.writeText(text).then(()=>alert('Copiado!')); }
+
+  /* ── Caixa ── */
+  function registrarEntrada(){ const desc=document.getElementById('entradaDescricao').value.trim(); const valor=Number(document.getElementById('entradaValor').value); if(!desc||!valor)return; const caixa=obterCaixa(); caixa.unshift({id:'ENT-'+Date.now(),data:hojeISO(),tipo:'entrada',descricao:desc,valor}); salvarCaixa(caixa); document.getElementById('entradaDescricao').value=''; document.getElementById('entradaValor').value=''; renderizarCaixa(); renderizarCaixaCompleto(); }
+  function registrarSaida(){ const desc=document.getElementById('saidaDescricao').value.trim(); const valor=Number(document.getElementById('saidaValor').value); if(!desc||!valor)return; const caixa=obterCaixa(); caixa.unshift({id:'SAI-'+Date.now(),data:hojeISO(),tipo:'saida',descricao:desc,valor}); salvarCaixa(caixa); document.getElementById('saidaDescricao').value=''; document.getElementById('saidaValor').value=''; renderizarCaixa(); renderizarCaixaCompleto(); }
+  function filtroCaixaHoje(){ document.getElementById('filtroCaixaData').value=hojeISO(); renderizarCaixaCompleto(); }
+  function renderizarCaixaCompleto(){
+    const data=document.getElementById('filtroCaixaData').value; const tipo=document.getElementById('filtroCaixaTipo').value;
+    let lista=obterCaixa().filter(x=>x.tipo==='entrada'||x.tipo==='saida');
+    if(data)lista=lista.filter(x=>x.data===data); if(tipo)lista=lista.filter(x=>x.tipo===tipo);
+    const ent=lista.filter(x=>x.tipo==='entrada').reduce((s,x)=>s+x.valor,0);
+    const sai=lista.filter(x=>x.tipo==='saida').reduce((s,x)=>s+x.valor,0);
+    document.getElementById('caixaEntradasFiltro').textContent=formatarBRL(ent);
+    document.getElementById('caixaSaidasFiltro').textContent=formatarBRL(sai);
+    document.getElementById('caixaSaldoFiltro').textContent=formatarBRL(ent-sai);
+    document.getElementById('caixaQuantFiltro').textContent=lista.length;
+    const el=document.getElementById('listaCaixaMovimentos');
+    if(!lista.length){el.innerHTML='<div style="padding:16px;text-align:center">Nenhuma movimentação</div>';return;}
+    el.innerHTML=lista.map(x=>`<div class="caixa-mov-item" onclick="selecionarMov('${x.id}')"><div class="mov-desc"><div>${x.tipo==='entrada'?'💵':'➖'} ${x.descricao}</div><div style="font-size:11px">${formatarData(x.data)}</div></div><div class="mov-val ${x.tipo}">${x.tipo==='entrada'?'+':'-'} ${formatarBRL(x.valor)}</div></div>`).join('');
+  }
+  function selecionarMov(id){ const mov=obterCaixa().find(x=>x.id===id); if(mov){document.getElementById('editMovId').value=id; document.getElementById('editMovDescricao').value=mov.descricao; document.getElementById('editMovValor').value=mov.valor; document.getElementById('editMovData').value=mov.data; document.getElementById('editMovWrapper').style.display='block';} }
+  function salvarEdicaoMov(){ const id=document.getElementById('editMovId').value; let caixa=obterCaixa(); const idx=caixa.findIndex(x=>x.id===id); if(idx>=0){caixa[idx].descricao=document.getElementById('editMovDescricao').value; caixa[idx].valor=Number(document.getElementById('editMovValor').value); caixa[idx].data=document.getElementById('editMovData').value; salvarCaixa(caixa); renderizarCaixa(); renderizarCaixaCompleto(); cancelarEdicaoMov();} }
+  function excluirMov(){ if(confirm('Excluir?')){const id=document.getElementById('editMovId').value; let caixa=obterCaixa().filter(x=>x.id!==id); salvarCaixa(caixa); renderizarCaixa(); renderizarCaixaCompleto(); cancelarEdicaoMov();} }
+  function cancelarEdicaoMov(){ document.getElementById('editMovWrapper').style.display='none'; document.getElementById('editMovId').value=''; }
+  function gerarFechamento(){ const inicio=document.getElementById('fechDataInicio').value; const fim=document.getElementById('fechDataFim').value; const resp=document.getElementById('fechResponsavel').value; const obs=document.getElementById('fechObs').value; if(!inicio||!fim)return; let lista=obterCaixa().filter(x=>(x.tipo==='entrada'||x.tipo==='saida')&&x.data>=inicio&&x.data<=fim); const ent=lista.filter(x=>x.tipo==='entrada').reduce((s,x)=>s+x.valor,0); const sai=lista.filter(x=>x.tipo==='saida').reduce((s,x)=>s+x.valor,0); const html=`<div><h3>Fechamento Caixa ${formatarData(inicio)} a ${formatarData(fim)}</h3><p>💵 Entradas: <strong>${formatarBRL(ent)}</strong><br>➖ Saídas: <strong>${formatarBRL(sai)}</strong><br>🏦 Saldo: <strong>${formatarBRL(ent-sai)}</strong></p><p>Responsável: ${resp||'-'}</p><p>Obs: ${obs||'-'}</p><hr><table border="1" cellpadding="5" style="font-size:12px;width:100%"><thead><tr style="background:#1a5276;color:white"><th>Data</th><th>Tipo</th><th>Descrição</th><th>Valor</th></tr></thead><tbody>${lista.map(x=>`<tr><td>${formatarData(x.data)}</td><td>${x.tipo==='entrada'?'💵 Entrada':'➖ Saída'}</td><td>${x.descricao}</td><td style="text-align:right">${x.tipo==='saida'?'- ':'+ '}${formatarBRL(x.valor)}</td></tr>`).join('')}</tbody></table></div>`; document.getElementById('conteudoFechamento').innerHTML=html; document.getElementById('resumoFechamento').style.display='block'; document.getElementById('btnImprimirFechamento').style.display='inline-block'; }
+
+  /* ── Caixa Pix ── */
+  function filtroCaixaPixHoje(){ document.getElementById('filtroCaixaPixData').value=hojeISO(); renderizarCaixaPixCompleto(); }
+  function renderizarCaixaPixCompleto(){ const data=document.getElementById('filtroCaixaPixData').value; let lista=obterCaixa().filter(x=>x.tipo==='pix'); if(data)lista=lista.filter(x=>x.data===data); const total=lista.reduce((s,x)=>s+x.valor,0); document.getElementById('caixaPixEntradasFiltro').textContent=formatarBRL(total); document.getElementById('caixaPixSaldoFiltro').textContent=formatarBRL(total); document.getElementById('caixaPixQuantFiltro').textContent=lista.length; const el=document.getElementById('listaCaixaPixMovimentos'); if(!lista.length){el.innerHTML='<div style="padding:16px;text-align:center;color:#6b7280">Nenhuma movimentação Pix</div>';return;} el.innerHTML=lista.map(x=>`<div class="caixa-mov-item" onclick="selecionarMovPix('${x.id}')" style="background:#faf5ff"><div class="mov-desc"><div>📲 ${x.descricao}</div><div style="font-size:11px">${formatarData(x.data)}</div></div><div class="mov-val entrada" style="color:var(--purple)">+ ${formatarBRL(x.valor)}</div></div>`).join(''); }
+  function registrarEntradaPix(){ const desc=document.getElementById('pixEntradaDescricao').value.trim(); const valor=Number(document.getElementById('pixEntradaValor').value); if(!desc||!valor){alert('Preencha a descrição e o valor.');return;} const caixa=obterCaixa(); caixa.unshift({id:'PIX-'+Date.now(),data:hojeISO(),tipo:'pix',descricao:desc,valor,formaPagamento:'Pix'}); salvarCaixa(caixa); document.getElementById('pixEntradaDescricao').value=''; document.getElementById('pixEntradaValor').value=''; renderizarCaixaPixCompleto(); }
+  function selecionarMovPix(id){ const mov=obterCaixa().find(x=>x.id===id); if(mov){document.getElementById('editMovPixId').value=id; document.getElementById('editMovPixDescricao').value=mov.descricao; document.getElementById('editMovPixValor').value=mov.valor; document.getElementById('editMovPixData').value=mov.data; document.getElementById('editMovPixWrapper').style.display='block';} }
+  function salvarEdicaoMovPix(){ const id=document.getElementById('editMovPixId').value; let caixa=obterCaixa(); const idx=caixa.findIndex(x=>x.id===id); if(idx>=0){caixa[idx].descricao=document.getElementById('editMovPixDescricao').value; caixa[idx].valor=Number(document.getElementById('editMovPixValor').value); caixa[idx].data=document.getElementById('editMovPixData').value; salvarCaixa(caixa); renderizarCaixaPixCompleto(); cancelarEdicaoMovPix();} }
+  function excluirMovPix(){ if(confirm('Excluir esta movimentação Pix?')){const id=document.getElementById('editMovPixId').value; let caixa=obterCaixa().filter(x=>x.id!==id); salvarCaixa(caixa); renderizarCaixaPixCompleto(); cancelarEdicaoMovPix();} }
+  function cancelarEdicaoMovPix(){ document.getElementById('editMovPixWrapper').style.display='none'; document.getElementById('editMovPixId').value=''; }
+  function gerarFechamentoPix(){ const inicio=document.getElementById('fechPixDataInicio').value; const fim=document.getElementById('fechPixDataFim').value; const resp=document.getElementById('fechPixResponsavel').value; const obs=document.getElementById('fechPixObs').value; if(!inicio||!fim)return; let lista=obterCaixa().filter(x=>x.tipo==='pix'&&x.data>=inicio&&x.data<=fim); const total=lista.reduce((s,x)=>s+x.valor,0); const html=`<div><h3>Fechamento Caixa Pix ${formatarData(inicio)} a ${formatarData(fim)}</h3><p>📲 Total Pix: <strong>${formatarBRL(total)}</strong><br>Movimentos: <strong>${lista.length}</strong></p><p>Responsável: ${resp||'-'}</p><p>Obs: ${obs||'-'}</p><hr><table border="1" cellpadding="5" style="font-size:12px;width:100%"><thead><tr style="background:#7c3aed;color:white"><th>Data</th><th>Descrição</th><th>Valor</th></tr></thead><tbody>${lista.map(x=>`<tr><td>${formatarData(x.data)}</td><td>${x.descricao}</td><td style="text-align:right;color:#6d28d9;font-weight:700">+ ${formatarBRL(x.valor)}</td></tr>`).join('')}</tbody></table></div>`; document.getElementById('conteudoFechamentoPix').innerHTML=html; document.getElementById('resumoFechamentoPix').style.display='block'; document.getElementById('btnImprimirFechamentoPix').style.display='inline-block'; }
+  function imprimirFechamentoPix(){ const c=document.getElementById('conteudoFechamentoPix').innerHTML; if(c){document.getElementById('printArea').innerHTML=c; window.print();} }
+  function imprimirFechamento(){ const c=document.getElementById('conteudoFechamento').innerHTML; if(c){document.getElementById('printArea').innerHTML=c; window.print();} }
+  function exportarJSON(){ const dados={pedidos:obterPedidos(),caixa:obterCaixa(),cobrancasPix:obterCobrancas(),contasReceber:obterContasReceber(),config:obterConfig()}; const blob=new Blob([JSON.stringify(dados,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`backup-${hojeISO()}.json`; a.click(); URL.revokeObjectURL(a.href); }
+
+  /* ── Config ── */
+  function salvarConfig(){ const cfg={empresa:document.getElementById('cfgEmpresa').value,cnpj:document.getElementById('cfgCNPJ').value,telefone:document.getElementById('cfgTelefone').value,endereco:document.getElementById('cfgEndereco').value,pixChave:document.getElementById('cfgPixChave').value,pixRecebedor:document.getElementById('cfgPixRecebedor').value,pixCidade:document.getElementById('cfgPixCidade').value,rodape:document.getElementById('cfgRodape').value}; salvarConfigStorage(cfg); renderizarConfigPreview(); preencherPixComConfig(); alert('Configurações salvas!'); }
+  function carregarConfig(){ const cfg=obterConfig(); document.getElementById('cfgEmpresa').value=cfg.empresa||''; document.getElementById('cfgCNPJ').value=cfg.cnpj||''; document.getElementById('cfgTelefone').value=cfg.telefone||''; document.getElementById('cfgEndereco').value=cfg.endereco||''; document.getElementById('cfgPixChave').value=cfg.pixChave||''; document.getElementById('cfgPixRecebedor').value=cfg.pixRecebedor||''; document.getElementById('cfgPixCidade').value=cfg.pixCidade||''; document.getElementById('cfgRodape').value=cfg.rodape||''; renderizarConfigPreview(); }
+  function renderizarConfigPreview(){ const cfg=obterConfig(); document.getElementById('configPreview').innerHTML=cfg.empresa?`<div>Empresa: ${cfg.empresa}<br>CNPJ: ${cfg.cnpj}<br>Tel: ${cfg.telefone}</div>`:'<span class="muted">Nenhuma configuração salva.</span>'; }
+
+  /* ── Parcelamento ── */
+  function parcGerarLinhas(){
+    const qtd=parseInt(document.getElementById('parcQtd').value)||1;
+    const primeiroVenc=document.getElementById('parcPrimeiroVenc').value;
+    const totalNota=calcularTotal();
+    const entrada=Number(document.getElementById('parcEntrada').value||0);
+    const saldo=Math.max(0,totalNota-entrada);
+    const valParcela=qtd>0?+(saldo/qtd).toFixed(2):0;
+    function addMes(isoDate,meses){ if(!isoDate)return''; const d=new Date(isoDate+'T12:00:00'); d.setMonth(d.getMonth()+meses); return d.toISOString().slice(0,10); }
+    let html='';
+    for(let i=0;i<qtd;i++){
+      const isUltima=i===qtd-1; const totalJaDistrib=valParcela*i; const valEsta=isUltima?+(saldo-totalJaDistrib).toFixed(2):valParcela; const dataVenc=addMes(primeiroVenc,i);
+      html+=`<div class="parcela-linha parc-linha-item" style="display:grid;grid-template-columns:36px 140px 130px 1fr;gap:8px;margin-bottom:8px;align-items:end"><div class="field"><label style="color:#b45309">${i+1}ª</label><div style="height:42px;display:flex;align-items:center;justify-content:center;font-weight:700;color:#b45309;font-size:16px">${i+1}</div></div><div class="field"><label style="color:#b45309">Vencimento</label><input class="parc-venc" type="date" value="${dataVenc}" oninput="parcRecalcular()" style="border-color:#fcd34d" /></div><div class="field"><label style="color:#b45309">Valor (R$)</label><input class="parc-val" type="number" step="0.01" value="${valEsta>0?valEsta:''}" oninput="parcRecalcular()" style="border-color:#fcd34d" /></div><div class="field"><label style="color:#b45309">Observação</label><input class="parc-obs" type="text" placeholder="Ex.: cheque, Pix..." style="border-color:#fcd34d" /></div></div>`;
+    }
+    document.getElementById('parcLinhas').innerHTML=html; parcRecalcular();
+  }
+  function parcRecalcular(){
+    const totalNota=calcularTotal(); const entrada=Number(document.getElementById('parcEntrada').value||0); const saldo=Math.max(0,totalNota-entrada);
+    const vals=[...document.querySelectorAll('.parc-val')].map(el=>Number(el.value||0)); const totalParc=vals.reduce((s,v)=>s+v,0); const diff=+(saldo-totalParc).toFixed(2);
+    const elRes=document.getElementById('parcResumo'); elRes.style.display='flex';
+    document.getElementById('prTotalNota').textContent=formatarBRL(totalNota);
+    document.getElementById('prEntrada').textContent=formatarBRL(entrada);
+    document.getElementById('prTotalParc').textContent=formatarBRL(totalParc);
+    const elSaldo=document.getElementById('prSaldo'); elSaldo.textContent=formatarBRL(Math.abs(diff))+(diff>0.01?' a distribuir':diff<-0.01?' a mais':' ✅ OK'); elSaldo.className=Math.abs(diff)<=0.05?'pr-ok':'pr-err';
+  }
+
+  /* ── Contas a Receber ── */
+  function crStatusConta(conta){ const totalPago=conta.pagamentos.reduce((s,p)=>s+Number(p.valor),0); if(totalPago>=conta.valorTotal)return'quitado'; const hoje=hojeISO(); const temVencido=conta.parcelas.some(p=>!p.pago&&p.vencimento&&p.vencimento<hoje); if(temVencido)return'vencido'; if(totalPago>0)return'parcial'; return'aberto'; }
+  function crTotalPago(conta){ return conta.pagamentos.reduce((s,p)=>s+Number(p.valor),0); }
+  function crBadgeStatus(st){ const mapa={quitado:'<span class="badge-cr quitado">✅ Quitado</span>',parcial:'<span class="badge-cr parcial">⚠️ Parcial</span>',aberto:'<span class="badge-cr aberto">🔴 Em aberto</span>',vencido:'<span class="badge-cr vencido">🚨 Vencida</span>'}; return mapa[st]||''; }
+  function renderizarContasReceber(){
+    const busca=(document.getElementById('crBusca').value||'').toLowerCase().trim();
+    const filtroStatus=document.getElementById('crFiltroStatus').value;
+    let lista=obterContasReceber();
+    let totalVenc=0,qtdVenc=0,totalAb=0,qtdAb=0,totalRec=0,qtdQuit=0;
+    lista.forEach(c=>{ const st=crStatusConta(c); const resto=c.valorTotal-crTotalPago(c); const pago=crTotalPago(c); if(st==='vencido'){totalVenc+=resto;qtdVenc++;} else if(st==='aberto'||st==='parcial'){totalAb+=resto;qtdAb++;} if(st==='quitado'){totalRec+=pago;qtdQuit++;} else{totalRec+=pago;} });
+    document.getElementById('crTotalVencido').textContent=formatarBRL(totalVenc);
+    document.getElementById('crQtdVencido').textContent=qtdVenc+' conta(s)';
+    document.getElementById('crTotalAberto').textContent=formatarBRL(totalAb);
+    document.getElementById('crQtdAberto').textContent=qtdAb+' conta(s)';
+    document.getElementById('crTotalRecebido').textContent=formatarBRL(totalRec);
+    document.getElementById('crQtdQuitado').textContent=qtdQuit+' quitada(s)';
+    if(busca)lista=lista.filter(c=>(c.cliente||'').toLowerCase().includes(busca)||(c.pedido||'').toLowerCase().includes(busca));
+    if(filtroStatus)lista=lista.filter(c=>crStatusConta(c)===filtroStatus);
+    lista.sort((a,b)=>{ const ord={vencido:0,aberto:1,parcial:2,quitado:3}; const sa=crStatusConta(a),sb=crStatusConta(b); if(ord[sa]!==ord[sb])return ord[sa]-ord[sb]; return(b.dataNota||'').localeCompare(a.dataNota||''); });
+    const el=document.getElementById('crListaContas');
+    if(!lista.length){el.innerHTML='<div style="padding:18px;text-align:center;color:var(--muted)">Nenhuma conta encontrada.</div>';return;}
+    el.innerHTML=lista.map(c=>{ const st=crStatusConta(c); const pago=crTotalPago(c); const pct=c.valorTotal>0?Math.min(100,(pago/c.valorTotal)*100):0; const selCls=c.id===crContaSelecionadaId?' selecionado':''; return `<div class="cr-item${selCls}" onclick="crSelecionarConta('${c.id}')"><div class="cr-item-top"><div><div class="cr-item-nome">${c.cliente} ${c.pedido?'— Ped. '+c.pedido:''}</div><div class="cr-item-info">${formatarData(c.dataNota)} &nbsp;·&nbsp; ${crBadgeStatus(st)}</div></div><div class="cr-item-valor" style="color:${pct>=100?'var(--ok)':'var(--warn)'}"><div style="font-size:12px;color:var(--muted);font-weight:400">restante</div>${formatarBRL(c.valorTotal-pago)}</div></div><div class="cr-progress-wrap"><div class="cr-progress-bar ${pct<50?'vermelho':pct<100?'amarelo':''}" style="width:${pct}%"></div></div><div class="cr-progress-label"><span>${formatarBRL(pago)} pago de ${formatarBRL(c.valorTotal)}</span><span>${pct.toFixed(0)}%</span></div></div>`; }).join('');
+  }
+  function crSelecionarConta(id){
+    crContaSelecionadaId=id; renderizarContasReceber();
+    const conta=obterContasReceber().find(c=>c.id===id); if(!conta)return;
+    document.getElementById('crDetalheVazio').style.display='none';
+    document.getElementById('crDetalheConteudo').style.display='block';
+    document.getElementById('crDetTitulo').textContent=conta.cliente+(conta.pedido?' — Pedido '+conta.pedido:'');
+    document.getElementById('crDetSubtitulo').textContent='Nota em '+formatarData(conta.dataNota)+(conta.obs?' · '+conta.obs:'');
+    document.getElementById('crPagData').value=hojeISO();
+    const pago=crTotalPago(conta); const resto=conta.valorTotal-pago; const pct=conta.valorTotal>0?Math.min(100,(pago/conta.valorTotal)*100):0; const st=crStatusConta(conta);
+    document.getElementById('crDetTotal').textContent=formatarBRL(conta.valorTotal);
+    document.getElementById('crDetPago').textContent=formatarBRL(pago);
+    document.getElementById('crDetRestante').textContent=formatarBRL(Math.max(0,resto));
+    document.getElementById('crDetProgressBar').style.width=pct+'%';
+    document.getElementById('crDetProgressBar').className='cr-progress-bar'+(pct<50?' vermelho':pct<100?' amarelo':'');
+    document.getElementById('crDetProgressPct').textContent=pct.toFixed(0)+'% pago';
+    document.getElementById('crDetStatusBadge').innerHTML=crBadgeStatus(st);
+    document.getElementById('crAlertaVencido').style.display=st==='vencido'?'block':'none';
+    const hoje=hojeISO(); let linhas='';
+    if(conta.entrada>0) linhas+=`<div class="parcela-row pago"><div class="pr-num">💵</div><div class="pr-data">${formatarData(conta.dataNota)}</div><div class="pr-desc">Entrada / pagamento inicial</div><div class="pr-valor" style="color:var(--ok)">+ ${formatarBRL(conta.entrada)}</div><div class="pr-acao"><span style="color:var(--ok);font-size:11px;font-weight:700">✅ Pago</span></div></div>`;
+    conta.parcelas.forEach((p,i)=>{ const venc=p.vencimento||''; const atrasada=!p.pago&&venc&&venc<hoje; const cls=p.pago?'pago':atrasada?'vencido':''; const statusTxt=p.pago?`<span style="color:var(--ok);font-size:11px;font-weight:700">✅ Pago</span>`:atrasada?`<span style="color:var(--danger);font-size:11px;font-weight:700;animation:piscaBadge 1.2s infinite">🚨 Vencida</span>`:`<span style="color:var(--warn);font-size:11px;font-weight:700">⏳ Pendente</span>`; linhas+=`<div class="parcela-row ${cls}"><div class="pr-num">${i+1}ª</div><div class="pr-data">${venc?formatarData(venc):'—'}</div><div class="pr-desc">${p.obs||'Parcela '+(i+1)}</div><div class="pr-valor" style="color:${p.pago?'var(--ok)':atrasada?'var(--danger)':'var(--warn)'}"> ${formatarBRL(p.valor)}</div><div class="pr-acao">${statusTxt}</div></div>`; });
+    conta.pagamentos.filter(p=>!p.ehEntrada).forEach(p=>{ linhas+=`<div class="parcela-row pago"><div class="pr-num">✅</div><div class="pr-data">${formatarData(p.data)}</div><div class="pr-desc">${p.forma||''} ${p.obs?'· '+p.obs:''}</div><div class="pr-valor" style="color:var(--ok)">+ ${formatarBRL(p.valor)}</div><div class="pr-acao"><span style="color:var(--ok);font-size:11px;font-weight:700">✅ Recebido</span></div></div>`; });
+    if(!linhas)linhas='<div style="padding:16px;text-align:center;color:var(--muted)">Nenhum movimento.</div>';
+    document.getElementById('crParcelasDetalhe').innerHTML=linhas;
+  }
+  function crRegistrarPagamento(){
+    const id=crContaSelecionadaId; if(!id){alert('Selecione uma conta.');return;}
+    const valor=Number(document.getElementById('crPagValor').value);
+    const data=document.getElementById('crPagData').value||hojeISO();
+    const forma=document.getElementById('crPagForma').value;
+    const obs=document.getElementById('crPagObs').value.trim();
+    if(!valor||valor<=0){alert('Informe um valor válido.');return;}
+    let lista=obterContasReceber(); const idx=lista.findIndex(c=>c.id===id); if(idx<0)return;
+    const conta=lista[idx]; const saldoRestante=conta.valorTotal-crTotalPago(conta);
+    if(valor>saldoRestante+0.01){if(!confirm(`O valor (${formatarBRL(valor)}) é maior que o saldo (${formatarBRL(saldoRestante)}). Continuar?`))return;}
+    conta.pagamentos.push({id:'PAG-'+Date.now(),data,valor,forma,obs,ehEntrada:false});
+    let restoPag=valor;
+    conta.parcelas.filter(p=>!p.pago).sort((a,b)=>(a.vencimento||'').localeCompare(b.vencimento||'')).forEach(p=>{ if(restoPag>=p.valor-0.01){p.pago=true;restoPag-=p.valor;} });
+    lista[idx]=conta; salvarContasReceber(lista);
+    const caixa=obterCaixa();
+    const descCaixa=`CR: ${conta.cliente}${conta.pedido?' Ped.'+conta.pedido:''} — ${forma}`;
+    if(forma==='Pix') caixa.unshift({id:'CRPIX-'+Date.now(),data,tipo:'pix',descricao:descCaixa,valor,formaPagamento:'Pix'});
+    else caixa.unshift({id:'CRENT-'+Date.now(),data,tipo:'entrada',descricao:descCaixa,valor,formaPagamento:forma});
+    salvarCaixa(caixa); renderizarCaixa();
+    document.getElementById('crPagValor').value=''; document.getElementById('crPagObs').value='';
+    renderizarContasReceber(); crSelecionarConta(id); alert('Pagamento registrado com sucesso!');
+  }
+  function crLimparForm(){}
+  function crImprimirDetalhe(){
+    const id=crContaSelecionadaId; if(!id)return;
+    const conta=obterContasReceber().find(c=>c.id===id); if(!conta)return;
+    const cfg=obterConfig(); const pago=crTotalPago(conta); const resto=conta.valorTotal-pago; const hoje=hojeISO();
+    const linhasParcelas=conta.parcelas.map((p,i)=>{ const atrasada=!p.pago&&p.vencimento&&p.vencimento<hoje; return `<tr style="${p.pago?'background:#f0fdf4':atrasada?'background:#fff1f2':''}"><td>${i+1}ª</td><td>${p.vencimento?formatarData(p.vencimento):'—'}</td><td>${p.obs||'Parcela '+(i+1)}</td><td style="text-align:right;font-weight:700">${formatarBRL(p.valor)}</td><td style="text-align:center">${p.pago?'✅ Pago':atrasada?'🚨 Vencida':'⏳ Pendente'}</td></tr>`; }).join('');
+    const linhasPag=conta.pagamentos.filter(p=>!p.ehEntrada).map(p=>`<tr style="background:#f0fdf4"><td colspan="2">${formatarData(p.data)}</td><td>${p.forma} ${p.obs?'· '+p.obs:''}</td><td style="text-align:right;font-weight:700;color:var(--ok)">+ ${formatarBRL(p.valor)}</td><td style="text-align:center">✅ Recebido</td></tr>`).join('');
+    const html=`<div style="font-family:Arial,sans-serif;padding:20px"><h2 style="margin:0">${cfg.empresa||'Extrato de Conta'}</h2><h3 style="margin:6px 0 2px">Conta a Receber — ${conta.cliente}${conta.pedido?' / Pedido '+conta.pedido:''}</h3><div style="font-size:13px;color:#6b7280;margin-bottom:14px">Emissão: ${formatarData(conta.dataNota)} ${conta.obs?'· '+conta.obs:''}</div><table style="width:100%;border-collapse:collapse;font-size:13px;margin-bottom:6px"><tr><td style="padding:4px 0"><strong>Total da nota:</strong></td><td style="text-align:right;font-weight:700">${formatarBRL(conta.valorTotal)}</td></tr>${conta.entrada>0?`<tr><td style="padding:4px 0">Entrada paga:</td><td style="text-align:right;color:var(--ok)">- ${formatarBRL(conta.entrada)}</td></tr>`:''}<tr><td style="padding:4px 0"><strong>Total pago:</strong></td><td style="text-align:right;font-weight:700;color:#059669">${formatarBRL(pago)}</td></tr><tr style="background:#fffbeb"><td style="padding:4px 0"><strong>Saldo restante:</strong></td><td style="text-align:right;font-weight:700;font-size:16px;color:#b45309">${formatarBRL(Math.max(0,resto))}</td></tr></table><hr/><h4>Parcelas / Vencimentos</h4><table border="1" cellpadding="6" style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:14px"><thead style="background:#1a5276;color:white"><tr><th>#</th><th>Vencimento</th><th>Descrição</th><th>Valor</th><th>Status</th></tr></thead><tbody>${conta.entrada>0?`<tr style="background:#f0fdf4"><td>💵</td><td>${formatarData(conta.dataNota)}</td><td>Entrada</td><td style="text-align:right">${formatarBRL(conta.entrada)}</td><td style="text-align:center">✅ Pago</td></tr>`:''}${linhasParcelas}${linhasPag}</tbody></table><div style="text-align:center;font-size:11px;color:#9ca3af;margin-top:10px">Impresso em ${formatarData(hojeISO())} — ${cfg.empresa||''}</div></div>`;
+    document.getElementById('printArea').innerHTML=html; window.print();
+  }
+
+  /* ══════════════════════════════════════════════════════════════
+     RESUMO DO DIA — VERSÃO COMPLETA
+     Mostra: notas emitidas + entradas/saídas de caixa + pix + recebimentos CR
+  ══════════════════════════════════════════════════════════════ */
+  function resumoDiaHoje(){ document.getElementById('resumoDiaData').value=hojeISO(); renderizarResumoDia(); }
+
+  function badgeForma(forma){
+    const mapa={'Pix':'bf-pix','Dinheiro':'bf-dinheiro','Cheque':'bf-cheque','Prazo / Fiado':'bf-fiado','Boleto':'bf-boleto'};
+    const icons={'Pix':'📲','Dinheiro':'💵','Cheque':'🏦','Prazo / Fiado':'📋','Boleto':'📄'};
+    const cls=mapa[forma]||'bf-outro'; const icon=icons[forma]||'💳';
+    return `<span class="badge-forma ${cls}">${icon} ${forma}</span>`;
+  }
+
+  function rdTag(label,cls){ return `<span class="rd-tag rd-tag-${cls}">${label}</span>`; }
+
+  function renderizarResumoDia(){
+    const data=document.getElementById('resumoDiaData').value;
+    const filtroTipo=document.getElementById('rdFiltroTipo').value;
+    const buscaMov=(document.getElementById('rdBuscaMov').value||'').toLowerCase().trim();
+
+    // ── Coleta dados do dia ──────────────────────────────────────
+    const pedidosDia=obterPedidos().filter(p=>p.tipoDocumento==='Pedido'&&p.data===data);
+    const caixaDia=obterCaixa().filter(x=>x.data===data);
+
+    const entCaixa=caixaDia.filter(x=>x.tipo==='entrada');
+    const saiCaixa=caixaDia.filter(x=>x.tipo==='saida');
+    const pixCaixa=caixaDia.filter(x=>x.tipo==='pix');
+
+    const totalEntradas=entCaixa.reduce((s,x)=>s+Number(x.valor),0);
+    const totalSaidas=saiCaixa.reduce((s,x)=>s+Number(x.valor),0);
+    const totalPix=pixCaixa.reduce((s,x)=>s+Number(x.valor),0);
+    const totalNotas=pedidosDia.reduce((s,p)=>s+Number(p.total||0),0);
+    const saldoLiquido=totalEntradas-totalSaidas;
+
+    // ── Totais topo ──────────────────────────────────────────────
+    document.getElementById('rdTotaisTop').innerHTML=`
+      <div class="rd-mini destaque"><div class="rd-label">🧾 Total de Notas</div><div class="rd-val">${formatarBRL(totalNotas)}</div><div class="rd-sub">${pedidosDia.length} pedido(s)</div></div>
+      <div class="rd-mini verde"><div class="rd-label">💵 Entradas Caixa</div><div class="rd-val">${formatarBRL(totalEntradas)}</div><div class="rd-sub">${entCaixa.length} mov.</div></div>
+      <div class="rd-mini vermelho"><div class="rd-label">➖ Saídas Caixa</div><div class="rd-val">${formatarBRL(totalSaidas)}</div><div class="rd-sub">${saiCaixa.length} mov.</div></div>
+      <div class="rd-mini roxo"><div class="rd-label">📲 Total Pix</div><div class="rd-val">${formatarBRL(totalPix)}</div><div class="rd-sub">${pixCaixa.length} mov.</div></div>
+    `;
+
+    // ── Saldo líquido ────────────────────────────────────────────
+    const rdSaldoBox=document.getElementById('rdSaldoBox');
+    rdSaldoBox.className='rd-saldo-box '+(saldoLiquido>=0?'positivo':'negativo');
+    document.getElementById('rdSaldoValor').textContent=formatarBRL(saldoLiquido);
+    document.getElementById('rdSaldoSub').textContent=`Entradas ${formatarBRL(totalEntradas)} − Saídas ${formatarBRL(totalSaidas)}`;
+
+    // ── Resumo caixa mini cards ───────────────────────────────────
+    document.getElementById('rdCaixaEntradas').textContent=formatarBRL(totalEntradas);
+    document.getElementById('rdCaixaEntradasQt').textContent=entCaixa.length+' mov.';
+    document.getElementById('rdCaixaSaidas').textContent=formatarBRL(totalSaidas);
+    document.getElementById('rdCaixaSaidasQt').textContent=saiCaixa.length+' mov.';
+    document.getElementById('rdPixTotal').textContent=formatarBRL(totalPix);
+    document.getElementById('rdPixQt').textContent=pixCaixa.length+' mov.';
+
+    // ── Formas de pagamento das notas ────────────────────────────
+    const ordemFormas=['Pix','Dinheiro','Cheque','Prazo / Fiado','Boleto'];
+    const grupos={};
+    pedidosDia.forEach(p=>{ const f=p.formaPagamento||'Outros'; if(!grupos[f])grupos[f]={total:0,notas:[]}; grupos[f].total+=Number(p.total)||0; grupos[f].notas.push(p); });
+    const formasUsadas=[...new Set([...ordemFormas,...Object.keys(grupos)])].filter(f=>grupos[f]);
+    const icones={'Pix':'📲','Dinheiro':'💵','Cheque':'🏦','Prazo / Fiado':'📋','Boleto':'📄'};
+    const classeForma={'Pix':'pix','Dinheiro':'dinheiro','Cheque':'cheque','Prazo / Fiado':'fiado','Boleto':'boleto'};
+
+    document.getElementById('rdFormasPagamento').innerHTML=formasUsadas.length
+      ? formasUsadas.map(forma=>{ const g=grupos[forma]; const icon=icones[forma]||'💳'; const cls=classeForma[forma]||''; const pct=totalNotas>0?((g.total/totalNotas)*100).toFixed(1):'0.0'; return `<div class="resumo-forma ${cls}"><div class="rf-icon">${icon}</div><div class="rf-info"><div class="rf-label">${forma}</div><div class="rf-quant">${g.notas.length} nota(s) · ${pct}% do total</div></div><div class="rf-valor">${formatarBRL(g.total)}</div></div>`; }).join('')
+      : '<div class="rd-empty">Nenhuma nota emitida nesta data.</div>';
+
+    document.getElementById('rdTotalNotasBox').innerHTML=`<div><div class="rt-label">💰 TOTAL DE NOTAS</div><div class="rt-quant" style="opacity:.75">${pedidosDia.length} nota(s) / pedido(s)</div></div><div class="rt-valor">${formatarBRL(totalNotas)}</div>`;
+
+    // ── Monta lista UNIFICADA de movimentações ────────────────────
+    // Cada item tem: { tipo, icone, desc, meta, valor, classe }
+    let movs = [];
+
+    // 1. Notas / pedidos emitidos
+    if(!filtroTipo||filtroTipo==='notas'){
+      pedidosDia.forEach(p=>{
+        const icon=icones[p.formaPagamento]||'🧾';
+        movs.push({
+          tipo:'nota', icon, ordem: p.numero,
+          desc:`Pedido ${String(p.numero).padStart(4,'0')} — ${p.cliente}`,
+          meta:`${badgeForma(p.formaPagamento||'Outros')} ${p.vendedor?'· '+p.vendedor:''}${p.descontoPct>0?' · Desc '+Number(p.descontoPct).toFixed(1)+'%':''}`,
+          valor:Number(p.total||0), classe:'nota',
+          tag:rdTag('NOTA','nota'), sinal:'+'
+        });
+      });
+    }
+
+    // 2. Entradas de caixa (dinheiro/cheque)
+    if(!filtroTipo||filtroTipo==='caixa'){
+      entCaixa.forEach(x=>{
+        movs.push({
+          tipo:'entrada', icon:'💵', ordem: x.id,
+          desc:x.descricao,
+          meta:`Caixa — entrada${x.formaPagamento?' · '+x.formaPagamento:''}`,
+          valor:Number(x.valor||0), classe:'entrada',
+          tag:rdTag('ENTRADA','din'), sinal:'+'
+        });
+      });
+    }
+
+    // 3. Saídas de caixa
+    if(!filtroTipo||filtroTipo==='saida'){
+      saiCaixa.forEach(x=>{
+        movs.push({
+          tipo:'saida', icon:'➖', ordem: x.id,
+          desc:x.descricao,
+          meta:'Caixa — saída',
+          valor:Number(x.valor||0), classe:'saida',
+          tag:rdTag('SAÍDA','sai'), sinal:'-'
+        });
+      });
+    }
+
+    // 4. Pix recebidos
+    if(!filtroTipo||filtroTipo==='pix'){
+      pixCaixa.forEach(x=>{
+        movs.push({
+          tipo:'pix', icon:'📲', ordem: x.id,
+          desc:x.descricao,
+          meta:'Caixa Pix',
+          valor:Number(x.valor||0), classe:'pix',
+          tag:rdTag('PIX','pix'), sinal:'+'
+        });
+      });
+    }
+
+    // 5. Recebimentos de Contas a Receber no dia (pagamentos avulsos)
+    if(!filtroTipo||filtroTipo==='cr'){
+      const contasReceber=obterContasReceber();
+      contasReceber.forEach(conta=>{
+        conta.pagamentos.filter(p=>!p.ehEntrada&&p.data===data).forEach(p=>{
+          movs.push({
+            tipo:'cr', icon:'✅', ordem: p.id,
+            desc:`Recebimento CR: ${conta.cliente}${conta.pedido?' · Ped.'+conta.pedido:''}`,
+            meta:`${p.forma||''} ${p.obs?'· '+p.obs:''}`,
+            valor:Number(p.valor||0), classe:p.forma==='Pix'?'pix':'entrada',
+            tag:rdTag('CR','cr'), sinal:'+'
+          });
+        });
+      });
+    }
+
+    // Aplica busca por texto
+    if(buscaMov){
+      movs=movs.filter(m=>m.desc.toLowerCase().includes(buscaMov)||m.meta.toLowerCase().includes(buscaMov));
+    }
+
+    // Renderiza lista
+    const el=document.getElementById('rdMovLista');
+    if(!movs.length){
+      el.innerHTML='<div class="rd-empty">Nenhuma movimentação encontrada para esta data e filtros.</div>';
+      document.getElementById('rdRodape').textContent='';
+      return;
+    }
+
+    el.innerHTML=movs.map(m=>`
+      <div class="rd-mov-item">
+        <div class="rd-mov-icon">${m.icon}</div>
+        <div class="rd-mov-info">
+          <div class="rd-mov-desc">${m.desc} ${m.tag}</div>
+          <div class="rd-mov-meta">${m.meta}</div>
+        </div>
+        <div class="rd-mov-valor ${m.classe}">${m.sinal} ${formatarBRL(m.valor)}</div>
+      </div>
+    `).join('');
+
+    const totalMovs=movs.filter(m=>m.tipo!=='saida').reduce((s,m)=>s+m.valor,0);
+    const totalMovsSaida=movs.filter(m=>m.tipo==='saida').reduce((s,m)=>s+m.valor,0);
+    document.getElementById('rdRodape').innerHTML=`<span>${movs.length} item(s) exibido(s)</span><span>Total entradas: ${formatarBRL(totalMovs)} &nbsp;|&nbsp; Saídas: ${formatarBRL(totalMovsSaida)}</span>`;
+  }
+
+  function imprimirResumoDia(){
+    const data=document.getElementById('resumoDiaData').value;
+    const [y,m,d]=data.split('-'); const dataFmt=`${d}/${m}/${y}`;
+    const pedidos=obterPedidos().filter(p=>p.tipoDocumento==='Pedido'&&p.data===data);
+    const caixaDia=obterCaixa().filter(x=>x.data===data);
+    const totalNotas=pedidos.reduce((s,p)=>s+Number(p.total||0),0);
+    const entCaixa=caixaDia.filter(x=>x.tipo==='entrada'); const saiCaixa=caixaDia.filter(x=>x.tipo==='saida'); const pixCaixa=caixaDia.filter(x=>x.tipo==='pix');
+    const totalEnt=entCaixa.reduce((s,x)=>s+x.valor,0); const totalSai=saiCaixa.reduce((s,x)=>s+x.valor,0); const totalPix=pixCaixa.reduce((s,x)=>s+x.valor,0);
+    const cfg=obterConfig();
+    const grupos={}; pedidos.forEach(p=>{ const f=p.formaPagamento||'Outros'; if(!grupos[f])grupos[f]={total:0,notas:[]}; grupos[f].total+=Number(p.total)||0; grupos[f].notas.push(p); });
+    const linhasGrupos=Object.entries(grupos).map(([f,g])=>`<tr><td>${f}</td><td style="text-align:center">${g.notas.length}</td><td style="text-align:right;font-weight:700">${formatarBRL(g.total)}</td></tr>`).join('');
+    const linhasNotas=pedidos.map(p=>`<tr><td>${String(p.numero).padStart(4,'0')}</td><td>${p.cliente}</td><td>${p.formaPagamento||''}</td><td style="text-align:right;font-weight:700">${formatarBRL(p.total)}</td></tr>`).join('');
+    const linhasCaixa=[...entCaixa.map(x=>`<tr><td>${formatarData(x.data)}</td><td style="color:var(--ok)">💵 Entrada</td><td>${x.descricao}</td><td style="text-align:right;color:var(--ok);font-weight:700">+ ${formatarBRL(x.valor)}</td></tr>`),...saiCaixa.map(x=>`<tr><td>${formatarData(x.data)}</td><td style="color:var(--danger)">➖ Saída</td><td>${x.descricao}</td><td style="text-align:right;color:var(--danger);font-weight:700">- ${formatarBRL(x.valor)}</td></tr>`),...pixCaixa.map(x=>`<tr><td>${formatarData(x.data)}</td><td style="color:#7c3aed">📲 Pix</td><td>${x.descricao}</td><td style="text-align:right;color:#7c3aed;font-weight:700">+ ${formatarBRL(x.valor)}</td></tr>`)].join('');
+    const html=`<div style="font-family:Arial,sans-serif;padding:20px">
+      <h2 style="margin:0 0 4px">${cfg.empresa||'Resumo do Dia'}</h2>
+      <div style="font-size:13px;color:#6b7280;margin-bottom:16px">Data: ${dataFmt} &nbsp;|&nbsp; Impresso em ${formatarData(hojeISO())}</div>
+      <table style="width:100%;font-size:13px;border-collapse:collapse;margin-bottom:14px">
+        <tr><td style="padding:4px 0">🧾 Total de notas emitidas</td><td style="text-align:right;font-weight:700">${formatarBRL(totalNotas)}</td></tr>
+        <tr><td style="padding:4px 0">💵 Entradas no caixa</td><td style="text-align:right;font-weight:700;color:#059669">${formatarBRL(totalEnt)}</td></tr>
+        <tr><td style="padding:4px 0">➖ Saídas do caixa</td><td style="text-align:right;font-weight:700;color:#dc2626">${formatarBRL(totalSai)}</td></tr>
+        <tr><td style="padding:4px 0">📲 Pix recebidos</td><td style="text-align:right;font-weight:700;color:#7c3aed">${formatarBRL(totalPix)}</td></tr>
+        <tr style="background:#f0fdf4"><td style="padding:6px 0;font-weight:700">💰 Saldo líquido (caixa)</td><td style="text-align:right;font-weight:700;font-size:16px;color:#059669">${formatarBRL(totalEnt-totalSai)}</td></tr>
+      </table>
+      <h3 style="margin:0 0 8px;color:#2563eb">Por forma de pagamento (notas)</h3>
+      <table border="1" cellpadding="6" style="width:100%;border-collapse:collapse;font-size:13px;margin-bottom:14px"><thead style="background:#1a5276;color:white"><tr><th>Forma</th><th>Qtd.</th><th>Total</th></tr></thead><tbody>${linhasGrupos}</tbody><tfoot><tr style="background:#1a5276;color:white;font-size:14px"><td><strong>TOTAL</strong></td><td style="text-align:center"><strong>${pedidos.length}</strong></td><td style="text-align:right"><strong>${formatarBRL(totalNotas)}</strong></td></tr></tfoot></table>
+      <h3 style="margin:0 0 8px;color:#2563eb">Notas emitidas</h3>
+      <table border="1" cellpadding="6" style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:14px"><thead style="background:#1a5276;color:white"><tr><th>Nº</th><th>Cliente</th><th>Pagamento</th><th>Total</th></tr></thead><tbody>${linhasNotas}</tbody></table>
+      ${linhasCaixa?`<h3 style="margin:0 0 8px;color:#2563eb">Movimentações de caixa</h3><table border="1" cellpadding="6" style="width:100%;border-collapse:collapse;font-size:12px"><thead style="background:#1a5276;color:white"><tr><th>Data</th><th>Tipo</th><th>Descrição</th><th>Valor</th></tr></thead><tbody>${linhasCaixa}</tbody></table>`:''}
+    </div>`;
+    document.getElementById('printArea').innerHTML=html; window.print();
+  }
+
+  /* ── Impressão de pedido ── */
+  function montarHTMLVia(cfg,tipoDoc,numero,data,vendedor,cliente,telefone,doc,endereco,cidade,email,complemento,obs,forma,descontoPct,descontoReais,subtotal,total,itensList,viaLabel){
+    return `<div style="font-family:Arial,sans-serif"><div style="border:2px solid #1a5276;border-radius:4px;overflow:hidden;margin-bottom:6px"><div style="display:flex;justify-content:space-between;align-items:stretch;border-bottom:1px solid #1a5276"><div style="padding:6px 12px;flex:1;border-right:1px solid #1a5276">${cfg.empresa?`<div style="font-size:15px;font-weight:700;color:#1a5276">${cfg.empresa}</div>`:''} ${cfg.cnpj?`<div style="font-size:10px;color:#6b7280">CNPJ: ${cfg.cnpj}</div>`:''} ${cfg.telefone?`<div style="font-size:10px;color:#6b7280">Tel: ${cfg.telefone}</div>`:''} ${cfg.endereco?`<div style="font-size:10px;color:#6b7280">${cfg.endereco}</div>`:''}</div><div style="padding:6px 14px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:160px"><div style="font-size:11px;font-weight:700;color:#1a5276;margin-bottom:2px">${tipoDoc.toUpperCase()} — ${viaLabel}</div><div style="font-size:22px;font-weight:700;color:#c0392b;letter-spacing:2px">${numero.padStart(7,'0')}</div></div></div><div style="display:grid;grid-template-columns:1fr auto;border-bottom:1px solid #1a5276"><div style="padding:5px 12px;border-right:1px solid #1a5276"><span style="font-size:11px;color:#6b7280;font-weight:700">Data </span><span style="font-size:12px">${formatarData(data)}</span></div><div style="padding:5px 12px;min-width:200px"><span style="font-size:11px;color:#6b7280;font-weight:700">Fone: </span><span style="font-size:12px">${telefone||'_________________'}</span></div></div><div style="padding:5px 12px;border-bottom:1px solid #1a5276"><span style="font-size:11px;color:#6b7280;font-weight:700">Sr(a). </span><span style="font-size:13px;font-weight:700">${cliente}</span>${doc?`<span style="font-size:11px;color:#6b7280;margin-left:14px">CPF/CNPJ: ${doc}</span>`:''}</div><div style="padding:5px 12px;border-bottom:1px solid #1a5276"><span style="font-size:11px;color:#6b7280;font-weight:700">End. </span><span style="font-size:12px">${endereco||''}${complemento?', '+complemento:''}</span></div>${(cidade||email||vendedor)?`<div style="padding:5px 12px;display:flex;gap:16px;border-bottom:1px solid #1a5276">${cidade?`<span><span style="font-size:11px;color:#6b7280;font-weight:700">Cidade: </span><span style="font-size:12px">${cidade}</span></span>`:''} ${email?`<span><span style="font-size:11px;color:#6b7280;font-weight:700">Bairro: </span><span style="font-size:12px">${email}</span></span>`:''} ${vendedor?`<span><span style="font-size:11px;color:#6b7280;font-weight:700">Vendedor: </span><span style="font-size:12px">${vendedor}</span></span>`:''}</div>`:''}</div><table style="width:100%;border-collapse:collapse;margin-bottom:6px;font-size:11px" border="1" cellpadding="5"><thead style="background:#1a5276;color:white"><tr><th style="text-align:center">QTDE</th><th style="text-align:left">DESCRIÇÃO</th><th style="text-align:center">DIMENSÕES</th><th style="text-align:center">TIPO</th><th style="text-align:center">VLR/UNID.</th><th style="text-align:right">TOTAL R$</th></tr></thead><tbody>${itensList.map((i,idx)=>{let dp=[];if(i.espessura)dp.push('esp:'+i.espessura+'m');if(i.largura)dp.push('larg:'+i.largura+'m');if(i.comprimento)dp.push('comp:'+i.comprimento+'m');const dim=dp.join(' × ')||'';let vl=formatarBRL(i.valor);if(i.tipo==='lamina'||i.tipo==='ml')vl+='/m';else if(i.tipo==='m2')vl+='/m²';else if(i.tipo==='m3')vl+='/m³';return `<tr style="${idx%2===0?'':'background:#f5f8ff'}"><td style="text-align:center;font-weight:700">${i.qtd.toLocaleString('pt-BR',{maximumFractionDigits:3})}</td><td style="font-size:11px">${i.produto}</td><td style="text-align:center;font-size:10px">${dim}</td><td style="text-align:center;font-size:10px">${tipoLabel(i.tipo)}</td><td style="text-align:center">${vl}</td><td style="text-align:right;font-weight:700">${formatarBRL(i.total)}</td></tr>`;}).join('')}${Array(Math.max(0,4-itensList.length)).fill('<tr><td style="height:18px">&nbsp;</td><td></td><td></td><td></td><td></td><td></td></tr>').join('')}</tbody></table><div style="display:flex;justify-content:flex-end;margin-bottom:6px"><table style="font-size:11px;min-width:240px;border:1px solid #1a5276"><tr><td style="padding:4px 10px;border-bottom:1px solid #dbe3ee;color:#6b7280">Subtotal</td><td style="padding:4px 10px;border-bottom:1px solid #dbe3ee;text-align:right">${formatarBRL(subtotal)}</td></tr>${descontoPct>0?`<tr><td style="padding:4px 10px;border-bottom:1px solid #dbe3ee;color:#dc2626">Desconto (${Number(descontoPct).toFixed(2)}%)</td><td style="padding:4px 10px;border-bottom:1px solid #dbe3ee;text-align:right;color:#dc2626">- ${formatarBRL(descontoReais)}</td></tr>`:''}<tr style="background:#1a5276;color:white"><td style="padding:6px 10px;font-size:14px;font-weight:700">TOTAL R$</td><td style="padding:6px 10px;text-align:right;font-size:16px;font-weight:700">${formatarBRL(total)}</td></tr><tr><td style="padding:4px 10px;color:#6b7280">Pagamento</td><td style="padding:4px 10px;text-align:right;font-weight:700">${forma}</td></tr></table></div>${obs?`<div style="border:1px solid #dbe3ee;border-radius:4px;padding:6px 10px;margin-bottom:6px;background:#fffbeb;font-size:11px"><strong>OBS.:</strong> ${obs}</div>`:''}<div style="display:flex;justify-content:space-between;padding-top:8px;border-top:1.5px solid #1a5276"><div style="text-align:center;flex:1"><div style="border-top:1px solid #333;padding-top:3px;margin-top:28px;font-size:10px">Vendedor</div></div><div style="text-align:center;flex:1"><div style="border-top:1px solid #333;padding-top:3px;margin-top:28px;font-size:10px">Cliente</div></div></div>${cfg.rodape?`<div style="text-align:center;font-size:9px;color:#9ca3af;margin-top:6px;border-top:1px solid #dbe3ee;padding-top:4px">${cfg.rodape}</div>`:''}</div>`;
   }
 
   function imprimirPedido(){
-    if(!document.getElementById('clienteNome').value.trim()||itens.length===0){ alert('Preencha os dados e adicione itens antes de imprimir.'); return; }
+    if(!document.getElementById('clienteNome').value.trim()||itens.length===0){alert('Preencha os dados e adicione itens antes de imprimir.');return;}
     const cfg=obterConfig(); const tipoDoc=getTipoDocumento(); const numero=document.getElementById('pedidoNumero').value; const data=document.getElementById('pedidoData').value; const vendedor=document.getElementById('pedidoVendedor').value.trim(); const cliente=document.getElementById('clienteNome').value.trim(); const telefone=document.getElementById('clienteTelefone').value.trim(); const doc=document.getElementById('clienteDoc').value.trim(); const endereco=document.getElementById('clienteEndereco').value.trim(); const cidade=document.getElementById('clienteCidade').value.trim(); const email=document.getElementById('clienteEmail').value.trim(); const complemento=document.getElementById('clienteComplemento').value.trim(); const obs=document.getElementById('pedidoObs').value.trim(); const forma=document.getElementById('formaPagamento').value; const descontoPct=Number(document.getElementById('pedidoDesconto').value||0); const subtotal=calcularSubtotal(); const descontoReais=calcularDescontoReais(); const total=calcularTotal();
     const via1=montarHTMLVia(cfg,tipoDoc,numero,data,vendedor,cliente,telefone,doc,endereco,cidade,email,complemento,obs,forma,descontoPct,descontoReais,subtotal,total,itens,'1ª VIA — EMPRESA');
     const via2=montarHTMLVia(cfg,tipoDoc,numero,data,vendedor,cliente,telefone,doc,endereco,cidade,email,complemento,obs,forma,descontoPct,descontoReais,subtotal,total,itens,'2ª VIA — CLIENTE');
@@ -891,72 +1370,32 @@
     setTimeout(()=>window.print(),150);
   }
 
-  function onlyAscii(t){ return (t||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Za-z0-9 $%*+\-./:]/g,'').toUpperCase(); }
-  function emv(id,v){ const l=String(v.length).padStart(2,'0'); return id+l+v; }
-  function crc16(str){ let c=0xFFFF; for(let i=0;i<str.length;i++){ c^=str.charCodeAt(i)<<8; for(let j=0;j<8;j++) c=(c&0x8000)?((c<<1)^0x1021):(c<<1),c&=0xFFFF; } return c.toString(16).toUpperCase().padStart(4,'0'); }
-  function gerarPayloadPix(key,name,city,value,txid){ const gui=emv('00','BR.GOV.BCB.PIX'); const chave=emv('01',key); const ma=emv('26',gui+chave); const pf=emv('00','01'); const mc=emv('52','0000'); const tc=emv('53','986'); const am=value>0?emv('54',Number(value).toFixed(2)):''; const cc=emv('58','BR'); const mn=emv('59',onlyAscii(name).slice(0,25)||'RECEBEDOR'); const mci=emv('60',onlyAscii(city).slice(0,15)||'CIDADE'); const ad=emv('62',emv('05',(txid||'***').slice(0,25))); const sem=pf+ma+mc+tc+am+cc+mn+mci+ad+'6304'; return sem+crc16(sem); }
-  function qrUrl(payload){ return 'https://api.qrserver.com/v1/create-qr-code/?size=320x320&data='+encodeURIComponent(payload); }
-
-  function gerarPixDoPedido(){ const key=document.getElementById('vendaPixChave').value.trim(); const name=document.getElementById('vendaPixRecebedor').value.trim(); const city=document.getElementById('vendaPixCidade').value.trim(); const value=calcularTotal(); const numero=document.getElementById('pedidoNumero').value; if(!key){ alert('Informe a chave Pix.'); return; } if(value<=0){ alert('O total deve ser maior que zero.'); return; } const payload=gerarPayloadPix(key,name||'RECEBEDOR',city||'CIDADE',value,'PED'+numero); document.getElementById('payloadDoPedido').textContent=payload; document.getElementById('qrDoPedido').src=qrUrl(payload); document.getElementById('qrDoPedidoWrapper').style.display='block'; }
-  function copiarPixPedido(){ const text=document.getElementById('payloadDoPedido').textContent; if(text) navigator.clipboard.writeText(text).then(()=>alert('Código Pix copiado!')); }
-  function gerarPixFinanceiro(){ const key=document.getElementById('finChave').value.trim(); const name=document.getElementById('finRecebedor').value.trim(); const city=document.getElementById('finCidade').value.trim(); const value=Number(document.getElementById('finValor').value||0); const pedidoNumero=document.getElementById('finPedidoNumero').value.trim(); const txid=(document.getElementById('finTxid').value.trim()||('PED'+(pedidoNumero||Date.now()))).slice(0,25); if(!document.getElementById('finCliente').value.trim()){ alert('Informe o cliente.'); return; } if(!key){ alert('Informe a chave Pix.'); return; } if(!value||value<=0){ alert('Informe um valor válido.'); return; } const payload=gerarPayloadPix(key,name,city,value,txid); document.getElementById('payloadFinanceiro').textContent=payload; document.getElementById('qrFinanceiro').src=qrUrl(payload); document.getElementById('finTxid').value=txid; }
-  function limparFinanceiro(){ ['finPedidoNumero','finCliente','finTelefone','finValor','finChave','finRecebedor','finCidade','finTxid','finObs'].forEach(id=>document.getElementById(id).value=''); document.getElementById('finData').value=hojeISO(); document.getElementById('payloadFinanceiro').textContent='O código Pix aparecerá aqui.'; document.getElementById('qrFinanceiro').removeAttribute('src'); preencherPixComConfig(); }
-  function salvarCobranca(){ const payload=document.getElementById('payloadFinanceiro').textContent; if(!payload||payload==='O código Pix aparecerá aqui.'){ alert('Gere o QR Code antes de salvar.'); return; } const c={ id:'COB-'+Date.now(), pedidoNumero:document.getElementById('finPedidoNumero').value.trim()||'-', data:document.getElementById('finData').value||hojeISO(), cliente:document.getElementById('finCliente').value.trim(), telefone:document.getElementById('finTelefone').value.trim(), valor:Number(document.getElementById('finValor').value||0), chave:document.getElementById('finChave').value.trim(), recebedor:document.getElementById('finRecebedor').value.trim(), cidade:document.getElementById('finCidade').value.trim(), txid:document.getElementById('finTxid').value.trim(), obs:document.getElementById('finObs').value.trim(), payload, pago:false, salvoEm:new Date().toISOString() }; let lista=obterCobrancas(); lista.unshift(c); salvarCobrancas(lista); renderizarCobrancas(); alert('Cobrança Pix salva.'); }
-  function renderizarCobrancas(){ const busca=document.getElementById('buscaCobranca').value.trim().toLowerCase(); const lista=obterCobrancas().filter(x=>!busca||(x.cliente||'').toLowerCase().includes(busca)||(x.pedidoNumero||'').toLowerCase().includes(busca)); const el=document.getElementById('listaCobrancas'); if(lista.length===0){ el.innerHTML='<div class="item"><span>Nenhuma cobrança Pix salva.</span></div>'; document.getElementById('detalheVazio').style.display='block'; document.getElementById('detalheCobranca').style.display='none'; return; } el.innerHTML=lista.map(x=>`<div class="item" onclick="selecionarCobranca('${x.id}')"><strong>Pedido ${x.pedidoNumero} — ${x.cliente}</strong><span>${formatarData(x.data)} • ${formatarBRL(x.valor)}</span><br><span class="status ${x.pago?'badge-paid':'badge-pending'}">${x.pago?'✅ Pago':'⏳ Pendente'}</span></div>`).join(''); if(lista.length) selecionarCobranca(lista[0].id); }
-  function selecionarCobranca(id){ const item=obterCobrancas().find(x=>x.id===id); if(!item) return; cobrancaSelecionadaId=id; document.getElementById('detalheVazio').style.display='none'; document.getElementById('detalheCobranca').style.display='block'; document.getElementById('detCliente').textContent=item.cliente; document.getElementById('detResumo').textContent=`${formatarData(item.data)} • ${item.telefone||''}`; document.getElementById('detPedido').textContent=item.pedidoNumero; document.getElementById('detValor').textContent=formatarBRL(item.valor); document.getElementById('detTxid').textContent=item.txid||'-'; document.getElementById('detRecebedor').textContent=item.recebedor||'-'; document.getElementById('detChave').textContent=item.chave||'-'; document.getElementById('payloadVendas').textContent=item.payload||''; document.getElementById('qrVendas').src=qrUrl(item.payload||''); const st=document.getElementById('detStatus'); st.textContent=item.pago?'✅ Pago':'⏳ Pendente'; st.className='status '+(item.pago?'badge-paid':'badge-pending'); }
-  function marcarCobrancaComoPaga(){ if(!cobrancaSelecionadaId) return; let lista=obterCobrancas(); const idx=lista.findIndex(x=>x.id===cobrancaSelecionadaId); if(idx<0||lista[idx].pago) return; lista[idx].pago=true; salvarCobrancas(lista); const caixa=obterCaixa(); caixa.unshift({ id:'PIX-'+Date.now(), data:hojeISO(), tipo:'pix', descricao:`Pix Pedido ${lista[idx].pedidoNumero} - ${lista[idx].cliente}`, valor:lista[idx].valor, formaPagamento:'Pix' }); salvarCaixa(caixa); renderizarCobrancas(); selecionarCobranca(cobrancaSelecionadaId); renderizarCaixa(); renderizarCaixaCompleto(); alert('Pago e lançado no caixa (Pix).'); }
-  function copiarPix(elId){ const text=document.getElementById(elId).textContent; if(text&&text!=='O código Pix aparecerá aqui.') navigator.clipboard.writeText(text).then(()=>alert('Copiado!')); }
-  function registrarEntrada(){ const desc=document.getElementById('entradaDescricao').value.trim(); const valor=Number(document.getElementById('entradaValor').value); if(!desc||!valor) return; const caixa=obterCaixa(); caixa.unshift({ id:'ENT-'+Date.now(), data:hojeISO(), tipo:'entrada', descricao:desc, valor }); salvarCaixa(caixa); document.getElementById('entradaDescricao').value=''; document.getElementById('entradaValor').value=''; renderizarCaixa(); renderizarCaixaCompleto(); }
-  function registrarSaida(){ const desc=document.getElementById('saidaDescricao').value.trim(); const valor=Number(document.getElementById('saidaValor').value); if(!desc||!valor) return; const caixa=obterCaixa(); caixa.unshift({ id:'SAI-'+Date.now(), data:hojeISO(), tipo:'saida', descricao:desc, valor }); salvarCaixa(caixa); document.getElementById('saidaDescricao').value=''; document.getElementById('saidaValor').value=''; renderizarCaixa(); renderizarCaixaCompleto(); }
-  function filtroCaixaHoje(){ document.getElementById('filtroCaixaData').value=hojeISO(); renderizarCaixaCompleto(); }
-  function renderizarCaixaCompleto(){
-    const data=document.getElementById('filtroCaixaData').value; const tipo=document.getElementById('filtroCaixaTipo').value;
-    let lista=obterCaixa().filter(x=>x.tipo==='entrada'||x.tipo==='saida');
-    if(data) lista=lista.filter(x=>x.data===data); if(tipo) lista=lista.filter(x=>x.tipo===tipo);
-    const ent=lista.filter(x=>x.tipo==='entrada').reduce((s,x)=>s+x.valor,0); const sai=lista.filter(x=>x.tipo==='saida').reduce((s,x)=>s+x.valor,0);
-    document.getElementById('caixaEntradasFiltro').textContent=formatarBRL(ent); document.getElementById('caixaSaidasFiltro').textContent=formatarBRL(sai); document.getElementById('caixaSaldoFiltro').textContent=formatarBRL(ent-sai); document.getElementById('caixaQuantFiltro').textContent=lista.length;
-    const el=document.getElementById('listaCaixaMovimentos');
-    if(!lista.length){ el.innerHTML='<div style="padding:16px;text-align:center">Nenhuma movimentação</div>'; return; }
-    el.innerHTML=lista.map(x=>`<div class="caixa-mov-item" onclick="selecionarMov('${x.id}')"><div class="mov-desc"><div>${x.tipo==='entrada'?'💵':'➖'} ${x.descricao}</div><div style="font-size:11px">${formatarData(x.data)}</div></div><div class="mov-val ${x.tipo}">${x.tipo==='entrada'?'+':'-'} ${formatarBRL(x.valor)}</div></div>`).join('');
+  /* ── aba nav ── */
+  function abrirAba(id,btn){
+    document.querySelectorAll('.tab-panel').forEach(el=>el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el=>el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    if(btn)btn.classList.add('active');
+    if(id==='abaVendasPix')renderizarCobrancas();
+    if(id==='abaCaixa'){filtroCaixaHoje();renderizarCaixaCompleto();}
+    if(id==='abaCaixaPix'){filtroCaixaPixHoje();renderizarCaixaPixCompleto();}
+    if(id==='abaResumoDia')resumoDiaHoje();
+    if(id==='abaContasReceber'){renderizarContasReceber();crLimparForm();}
   }
-  function selecionarMov(id){ const mov=obterCaixa().find(x=>x.id===id); if(mov){ document.getElementById('editMovId').value=id; document.getElementById('editMovDescricao').value=mov.descricao; document.getElementById('editMovValor').value=mov.valor; document.getElementById('editMovData').value=mov.data; document.getElementById('editMovWrapper').style.display='block'; } }
-  function salvarEdicaoMov(){ const id=document.getElementById('editMovId').value; let caixa=obterCaixa(); const idx=caixa.findIndex(x=>x.id===id); if(idx>=0){ caixa[idx].descricao=document.getElementById('editMovDescricao').value; caixa[idx].valor=Number(document.getElementById('editMovValor').value); caixa[idx].data=document.getElementById('editMovData').value; salvarCaixa(caixa); renderizarCaixa(); renderizarCaixaCompleto(); cancelarEdicaoMov(); } }
-  function excluirMov(){ if(confirm('Excluir?')){ const id=document.getElementById('editMovId').value; let caixa=obterCaixa(); caixa=caixa.filter(x=>x.id!==id); salvarCaixa(caixa); renderizarCaixa(); renderizarCaixaCompleto(); cancelarEdicaoMov(); } }
-  function cancelarEdicaoMov(){ document.getElementById('editMovWrapper').style.display='none'; document.getElementById('editMovId').value=''; }
-  function gerarFechamento(){ const inicio=document.getElementById('fechDataInicio').value; const fim=document.getElementById('fechDataFim').value; const resp=document.getElementById('fechResponsavel').value; const obs=document.getElementById('fechObs').value; if(!inicio||!fim) return; let lista=obterCaixa().filter(x=>(x.tipo==='entrada'||x.tipo==='saida')&&x.data>=inicio&&x.data<=fim); const ent=lista.filter(x=>x.tipo==='entrada').reduce((s,x)=>s+x.valor,0); const sai=lista.filter(x=>x.tipo==='saida').reduce((s,x)=>s+x.valor,0); const html=`<div><h3>Fechamento Caixa ${formatarData(inicio)} a ${formatarData(fim)}</h3><p>💵 Entradas: <strong>${formatarBRL(ent)}</strong><br>➖ Saídas: <strong>${formatarBRL(sai)}</strong><br>🏦 Saldo: <strong>${formatarBRL(ent-sai)}</strong></p><p>Responsável: ${resp||'-'}</p><p>Obs: ${obs||'-'}</p><hr><table border="1" cellpadding="5" style="font-size:12px;width:100%"><thead><tr style="background:#1a5276;color:white"><th>Data</th><th>Tipo</th><th>Descrição</th><th>Valor</th></tr></thead><tbody>${lista.map(x=>`<tr><td>${formatarData(x.data)}</td><td>${x.tipo==='entrada'?'💵 Entrada':'➖ Saída'}</td><td>${x.descricao}</td><td style="text-align:right">${x.tipo==='saida'?'- ':'+ '}${formatarBRL(x.valor)}</td></tr>`).join('')}</tbody></table></div>`; document.getElementById('conteudoFechamento').innerHTML=html; document.getElementById('resumoFechamento').style.display='block'; document.getElementById('btnImprimirFechamento').style.display='inline-block'; }
-  function filtroCaixaPixHoje(){ document.getElementById('filtroCaixaPixData').value=hojeISO(); renderizarCaixaPixCompleto(); }
-  function renderizarCaixaPixCompleto(){
-    const data=document.getElementById('filtroCaixaPixData').value; let lista=obterCaixa().filter(x=>x.tipo==='pix'); if(data) lista=lista.filter(x=>x.data===data); const total=lista.reduce((s,x)=>s+x.valor,0);
-    document.getElementById('caixaPixEntradasFiltro').textContent=formatarBRL(total); document.getElementById('caixaPixSaldoFiltro').textContent=formatarBRL(total); document.getElementById('caixaPixQuantFiltro').textContent=lista.length;
-    const el=document.getElementById('listaCaixaPixMovimentos');
-    if(!lista.length){ el.innerHTML='<div style="padding:16px;text-align:center;color:#6b7280">Nenhuma movimentação Pix</div>'; return; }
-    el.innerHTML=lista.map(x=>`<div class="caixa-mov-item" onclick="selecionarMovPix('${x.id}')" style="background:#faf5ff"><div class="mov-desc"><div>📲 ${x.descricao}</div><div style="font-size:11px">${formatarData(x.data)}</div></div><div class="mov-val entrada" style="color:var(--purple)">+ ${formatarBRL(x.valor)}</div></div>`).join('');
-  }
-  function registrarEntradaPix(){ const desc=document.getElementById('pixEntradaDescricao').value.trim(); const valor=Number(document.getElementById('pixEntradaValor').value); if(!desc||!valor){ alert('Preencha a descrição e o valor.'); return; } const caixa=obterCaixa(); caixa.unshift({ id:'PIX-'+Date.now(), data:hojeISO(), tipo:'pix', descricao:desc, valor, formaPagamento:'Pix' }); salvarCaixa(caixa); document.getElementById('pixEntradaDescricao').value=''; document.getElementById('pixEntradaValor').value=''; renderizarCaixaPixCompleto(); }
-  function selecionarMovPix(id){ const mov=obterCaixa().find(x=>x.id===id); if(mov){ document.getElementById('editMovPixId').value=id; document.getElementById('editMovPixDescricao').value=mov.descricao; document.getElementById('editMovPixValor').value=mov.valor; document.getElementById('editMovPixData').value=mov.data; document.getElementById('editMovPixWrapper').style.display='block'; } }
-  function salvarEdicaoMovPix(){ const id=document.getElementById('editMovPixId').value; let caixa=obterCaixa(); const idx=caixa.findIndex(x=>x.id===id); if(idx>=0){ caixa[idx].descricao=document.getElementById('editMovPixDescricao').value; caixa[idx].valor=Number(document.getElementById('editMovPixValor').value); caixa[idx].data=document.getElementById('editMovPixData').value; salvarCaixa(caixa); renderizarCaixaPixCompleto(); cancelarEdicaoMovPix(); } }
-  function excluirMovPix(){ if(confirm('Excluir esta movimentação Pix?')){ const id=document.getElementById('editMovPixId').value; let caixa=obterCaixa(); caixa=caixa.filter(x=>x.id!==id); salvarCaixa(caixa); renderizarCaixaPixCompleto(); cancelarEdicaoMovPix(); } }
-  function cancelarEdicaoMovPix(){ document.getElementById('editMovPixWrapper').style.display='none'; document.getElementById('editMovPixId').value=''; }
-  function gerarFechamentoPix(){ const inicio=document.getElementById('fechPixDataInicio').value; const fim=document.getElementById('fechPixDataFim').value; const resp=document.getElementById('fechPixResponsavel').value; const obs=document.getElementById('fechPixObs').value; if(!inicio||!fim) return; let lista=obterCaixa().filter(x=>x.tipo==='pix'&&x.data>=inicio&&x.data<=fim); const total=lista.reduce((s,x)=>s+x.valor,0); const html=`<div><h3>Fechamento Caixa Pix ${formatarData(inicio)} a ${formatarData(fim)}</h3><p>📲 Total Pix recebido: <strong>${formatarBRL(total)}</strong><br>Movimentos: <strong>${lista.length}</strong></p><p>Responsável: ${resp||'-'}</p><p>Obs: ${obs||'-'}</p><hr><table border="1" cellpadding="5" style="font-size:12px;width:100%"><thead><tr style="background:#7c3aed;color:white"><th>Data</th><th>Descrição</th><th>Valor</th></tr></thead><tbody>${lista.map(x=>`<tr><td>${formatarData(x.data)}</td><td>${x.descricao}</td><td style="text-align:right;color:#6d28d9;font-weight:700">+ ${formatarBRL(x.valor)}</td></tr>`).join('')}</tbody></table></div>`; document.getElementById('conteudoFechamentoPix').innerHTML=html; document.getElementById('resumoFechamentoPix').style.display='block'; document.getElementById('btnImprimirFechamentoPix').style.display='inline-block'; }
-  function imprimirFechamentoPix(){ const c=document.getElementById('conteudoFechamentoPix').innerHTML; if(c){ document.getElementById('printArea').innerHTML=c; window.print(); } }
-  function imprimirFechamento(){ const conteudo=document.getElementById('conteudoFechamento').innerHTML; if(conteudo){ document.getElementById('printArea').innerHTML=conteudo; window.print(); } }
-  function exportarJSON(){ const dados={pedidos:obterPedidos(),caixa:obterCaixa(),cobrancasPix:obterCobrancas(),config:obterConfig()}; const blob=new Blob([JSON.stringify(dados,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`backup-${hojeISO()}.json`; a.click(); URL.revokeObjectURL(a.href); }
-  function salvarConfig(){ const cfg={ empresa:document.getElementById('cfgEmpresa').value, cnpj:document.getElementById('cfgCNPJ').value, telefone:document.getElementById('cfgTelefone').value, endereco:document.getElementById('cfgEndereco').value, pixChave:document.getElementById('cfgPixChave').value, pixRecebedor:document.getElementById('cfgPixRecebedor').value, pixCidade:document.getElementById('cfgPixCidade').value, rodape:document.getElementById('cfgRodape').value }; salvarConfigStorage(cfg); renderizarConfigPreview(); preencherPixComConfig(); alert('Configurações salvas!'); }
-  function carregarConfig(){ const cfg=obterConfig(); document.getElementById('cfgEmpresa').value=cfg.empresa||''; document.getElementById('cfgCNPJ').value=cfg.cnpj||''; document.getElementById('cfgTelefone').value=cfg.telefone||''; document.getElementById('cfgEndereco').value=cfg.endereco||''; document.getElementById('cfgPixChave').value=cfg.pixChave||''; document.getElementById('cfgPixRecebedor').value=cfg.pixRecebedor||''; document.getElementById('cfgPixCidade').value=cfg.pixCidade||''; document.getElementById('cfgRodape').value=cfg.rodape||''; renderizarConfigPreview(); }
-  function renderizarConfigPreview(){ const cfg=obterConfig(); document.getElementById('configPreview').innerHTML=cfg.empresa?`<div>Empresa: ${cfg.empresa}<br>CNPJ: ${cfg.cnpj}<br>Tel: ${cfg.telefone}</div>`:'<span class="muted">Nenhuma configuração salva.</span>'; }
-  function abrirAba(id,btn){ document.querySelectorAll('.tab-panel').forEach(el=>el.classList.remove('active')); document.querySelectorAll('.tab-btn').forEach(el=>el.classList.remove('active')); document.getElementById(id).classList.add('active'); if(btn) btn.classList.add('active'); if(id==='abaVendasPix') renderizarCobrancas(); if(id==='abaCaixa'){ filtroCaixaHoje(); renderizarCaixaCompleto(); } if(id==='abaCaixaPix'){ filtroCaixaPixHoje(); renderizarCaixaPixCompleto(); } }
 
-  document.getElementById('finData').value=hojeISO();
+  /* ── init ── */
   document.getElementById('fechDataInicio').value=hojeISO();
   document.getElementById('fechDataFim').value=hojeISO();
   document.getElementById('fechPixDataInicio').value=hojeISO();
   document.getElementById('fechPixDataFim').value=hojeISO();
+  document.getElementById('crPagData').value=hojeISO();
   novoPedido();
   renderizarPedidos();
   renderizarCaixa();
   renderizarCobrancas();
   carregarConfig();
   preencherPixComConfig();
+  resumoDiaHoje();
 </script>
 </body>
 </html>
